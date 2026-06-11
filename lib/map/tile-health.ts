@@ -82,20 +82,27 @@ export function checkTileHealth(center: LatLng): Promise<TileHealth> {
     }
     const terrain = await probeUrl(fill(TERRAIN_TILES, tile));
     const health: TileHealth = { imagery, terrain };
-    try {
-      sessionStorage.setItem(
-        CACHE_KEY,
-        JSON.stringify({ imageryId: imagery?.id ?? null, terrain })
-      );
-    } catch {
-      /* ignore */
+    if (imagery) {
+      // Cache successes only — a transient failure at first paint must not
+      // lock the session into illustrated mode; the next mount re-probes.
+      try {
+        sessionStorage.setItem(
+          CACHE_KEY,
+          JSON.stringify({ imageryId: imagery.id, terrain })
+        );
+      } catch {
+        /* ignore */
+      }
+    } else {
+      inflight = null;
     }
     return health;
   })();
   return inflight;
 }
 
-/** Clear the cached probe (used by the satellite/illustrated toggle). */
+/** Programmatic escape hatch: clear the cached probe so the next
+ * checkTileHealth() call re-tests the providers. */
 export function resetTileHealth() {
   inflight = null;
   try {

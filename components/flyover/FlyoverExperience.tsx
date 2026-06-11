@@ -35,6 +35,17 @@ export function FlyoverExperience({
 
   const hole = course.holes[idx];
 
+  // Engines report progress per animation frame; quantize so React only
+  // re-renders the HUD ~100 times per flight instead of ~60/s.
+  const reportProgress = useCallback((t: number) => {
+    setProgress(Math.round(t * 100) / 100);
+  }, []);
+
+  const replay = useCallback(() => {
+    setProgress(0);
+    setReplayToken((t) => t + 1);
+  }, []);
+
   useEffect(() => {
     let alive = true;
     checkTileHealth(hole.tee).then((h) => {
@@ -69,11 +80,11 @@ export function FlyoverExperience({
       if (/^(input|textarea|select)$/i.test(target.tagName)) return;
       if (e.key === "ArrowRight") select(hole.number + 1);
       if (e.key === "ArrowLeft") select(hole.number - 1);
-      if (e.key.toLowerCase() === "r") setReplayToken((t) => t + 1);
+      if (e.key.toLowerCase() === "r") replay();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [hole.number, select]);
+  }, [hole.number, select, replay]);
 
   const satelliteAvailable = !!health?.imagery && !webglBroken;
   const mode: Mode | null = health
@@ -107,7 +118,7 @@ export function FlyoverExperience({
           hole={hole}
           replayToken={replayToken}
           onPhase={setPhase}
-          onProgress={setProgress}
+          onProgress={reportProgress}
           onFatal={() => {
             setWebglBroken(true);
             setOverride("illustrated");
@@ -118,7 +129,7 @@ export function FlyoverExperience({
           hole={hole}
           replayToken={replayToken}
           onPhase={setPhase}
-          onProgress={setProgress}
+          onProgress={reportProgress}
         />
       ) : (
         <div className="absolute inset-0 flex items-center justify-center">
@@ -242,7 +253,7 @@ export function FlyoverExperience({
               {!hole.videoUrl && (
                 <button
                   type="button"
-                  onClick={() => setReplayToken((t) => t + 1)}
+                  onClick={replay}
                   className="btn-primary !px-4 !py-2.5"
                 >
                   Replay

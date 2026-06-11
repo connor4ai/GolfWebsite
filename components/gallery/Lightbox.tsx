@@ -4,8 +4,9 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import type { GalleryImage } from "@/config/types";
+import { useFocusTrap } from "@/components/ui/useFocusTrap";
 
-/** Full-screen lightbox: Esc closes, arrows navigate, focus is contained. */
+/** Full-screen lightbox: Esc closes, arrows navigate, Tab is trapped. */
 export function Lightbox({
   images,
   index,
@@ -18,25 +19,33 @@ export function Lightbox({
   onNavigate: (index: number) => void;
 }) {
   const img = images[index];
+  const rootRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  useFocusTrap(rootRef);
 
+  // Mount-only: take focus once and lock page scroll. Re-focusing on every
+  // image change would steal focus from the Next/Prev button mid-use.
   useEffect(() => {
     closeRef.current?.focus();
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
       if (e.key === "ArrowRight") onNavigate(index + 1);
       if (e.key === "ArrowLeft") onNavigate(index - 1);
     };
     document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
+    return () => document.removeEventListener("keydown", onKey);
   }, [index, onClose, onNavigate]);
 
   return (
     <motion.div
+      ref={rootRef}
       role="dialog"
       aria-modal="true"
       aria-label={`Image ${index + 1} of ${images.length}: ${img.alt}`}

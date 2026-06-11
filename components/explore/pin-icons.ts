@@ -27,11 +27,16 @@ export function buildPinElement(
   el.className = "fairway-pin";
   el.dataset.category = pin.category;
   el.setAttribute("aria-label", `${pin.title} — open details`);
-  el.innerHTML = `
-    <span class="fairway-pin__ring">${ICON_SVG(pin.category)}</span>
-    <span class="fairway-pin__stem"></span>
-    <span class="fairway-pin__label">${pin.title}</span>
-  `;
+  const ring = document.createElement("span");
+  ring.className = "fairway-pin__ring";
+  ring.innerHTML = ICON_SVG(pin.category); // static template markup only
+  const stem = document.createElement("span");
+  stem.className = "fairway-pin__stem";
+  const label = document.createElement("span");
+  label.className = "fairway-pin__label";
+  // textContent — config-supplied titles must never parse as HTML.
+  label.textContent = pin.title;
+  el.append(ring, stem, label);
   el.addEventListener("click", (e) => {
     e.stopPropagation();
     onSelect(pin);

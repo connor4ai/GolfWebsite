@@ -9,7 +9,13 @@ import { getAmbientAudio } from "@/lib/audio/ambient";
  * autoplay policies are respected.
  */
 export function AudioToggle({ className = "" }: { className?: string }) {
-  const [on, setOn] = useState(false);
+  // The audio engine is a singleton that outlives any one toggle (entry
+  // overlay → HUD → flyover), so initialize from its live state. At
+  // SSR/hydration time audio can never be running (it requires a user
+  // gesture), so this is hydration-safe.
+  const [on, setOn] = useState(
+    () => typeof window !== "undefined" && getAmbientAudio().isRunning
+  );
   const [busy, setBusy] = useState(false);
 
   const toggle = async () => {

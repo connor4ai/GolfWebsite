@@ -6,23 +6,31 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import type { MapPin } from "@/config/types";
 import { CATEGORY_LABEL } from "@/lib/site";
+import { useFocusTrap } from "@/components/ui/useFocusTrap";
 
 /** Slide-in detail panel for a selected map pin. */
 export function PinPanel({ pin, onClose }: { pin: MapPin; onClose: () => void }) {
   const reduced = useReducedMotion();
+  const rootRef = useRef<HTMLElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  // Parent passes an inline onClose; keep it in a ref so re-renders (e.g.
+  // toggling a filter chip) never re-run the focus effect and steal focus.
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
+  useFocusTrap(rootRef);
 
   useEffect(() => {
     closeRef.current?.focus();
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") onCloseRef.current();
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [onClose, pin.id]);
+  }, [pin.id]);
 
   return (
     <motion.aside
+      ref={rootRef}
       key={pin.id}
       role="dialog"
       aria-label={pin.title}

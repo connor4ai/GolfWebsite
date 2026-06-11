@@ -128,6 +128,9 @@ body {
 /* Map pins (satellite markers — created imperatively)                 */
 /* ------------------------------------------------------------------ */
 
+/* NOTE: MapLibre positions the marker by writing an inline `transform` on
+   this root element every frame — never transition or transform the root,
+   only `opacity` here and `transform` on children. */
 .fairway-pin {
   position: relative;
   display: flex;
@@ -137,9 +140,7 @@ body {
   background: none;
   border: none;
   padding: 0;
-  transition:
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.45s ease;
+  transition: opacity 0.45s ease;
 }
 .fairway-pin__ring {
   display: flex;
@@ -200,8 +201,10 @@ body {
 }
 .fairway-pin.pin-hidden {
   opacity: 0;
-  transform: scale(0.4) translateY(10px);
   pointer-events: none;
+}
+.fairway-pin.pin-hidden .fairway-pin__ring {
+  transform: scale(0.4) translateY(10px);
 }
 
 /* Illustrated map pins */

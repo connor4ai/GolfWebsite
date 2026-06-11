@@ -86,6 +86,9 @@ export function buildSatelliteStyle(provider: ImageryProvider): StyleSpecificati
         maxzoom: provider.maxzoom,
         attribution: provider.attribution,
       },
+      // Deliberately separate DEM sources for terrain vs. hillshade —
+      // sharing one raster-dem source between the two is a known MapLibre
+      // flicker footgun; the HTTP cache dedupes the tile fetches anyway.
       "terrain-dem": buildTerrainSource(),
       "hillshade-dem": buildTerrainSource(),
     },

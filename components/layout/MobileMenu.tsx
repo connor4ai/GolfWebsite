@@ -5,11 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { site, navItems } from "@/lib/site";
+import { useFocusTrap } from "@/components/ui/useFocusTrap";
 
 /** Full-screen menu (all viewports) with staggered reveal. */
 export function MobileMenu({ onClose }: { onClose: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  useFocusTrap(ref);
 
   useEffect(() => {
     const prev = document.activeElement as HTMLElement | null;

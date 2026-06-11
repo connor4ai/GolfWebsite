@@ -98,7 +98,10 @@ export function SatelliteFlyover({
     engineRef.current = engine;
     engine.start();
     return () => {
-      engine.dispose();
+      // On full unmount the map-lifecycle cleanup has already run (effects
+      // clean up in declaration order) and removed the map — only cancel.
+      if (mapRef.current) engine.dispose();
+      else engine.cancel();
     };
   }, [hole, replayToken, ready]);
 

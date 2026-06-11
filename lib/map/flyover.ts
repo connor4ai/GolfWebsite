@@ -285,6 +285,8 @@ export class FlyoverEngine {
   dispose() {
     this.cancel();
     const map = this.map;
+    // After Map.remove() the style is gone; getLayer/getSource would throw.
+    if (!(map as unknown as { style?: unknown }).style) return;
     for (const id of [
       `${SRC_LINE}-glow`,
       `${SRC_LINE}-core`,

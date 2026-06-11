@@ -118,8 +118,24 @@ revisit first.
     imagery hosts. Per the contract's allowance, verification fell back to:
     SSR content assertions on every route, end-to-end exercise of the
     illustrated mode path (the same components/state machine the satellite
-    mode drives), and a line-level audit of every interaction handler
-    (documented in the commit). The satellite path runs against the same
-    health-check contract and should be eyeballed once in a normal browser:
-    `/explore` (pins → panel → flyTo) and `/course/the-ridge/holes`
+    mode drives), and a line-level audit of every interaction handler.
+    The satellite path runs against the same health-check contract and
+    should be eyeballed once in a normal browser: `/explore`
+    (pins → panel → flyTo) and `/course/the-ridge/holes`
     (flight + orbit + line draw).
+25. **Adversarial code review pass** (in lieu of browser checks): a second
+    fresh-context review traced the map lifecycle, animation math, state
+    machines, and modal focus handling against the installed MapLibre/
+    React/Framer Motion sources. It surfaced five real bugs — engine
+    disposal ordered after `Map.remove()` on unmount (crash), a CSS
+    transition fighting MapLibre's per-frame marker transforms (pins
+    lagging the basemap), a structural `useReducedMotion` branch in the
+    page-transition template (hydration failure for reduced-motion users),
+    lightbox focus re-stolen on every image change (second Enter closed
+    it), and audio-toggle state desyncing from the audio singleton — all
+    fixed, plus hardening: focus traps for the menu/lightbox/pin panel,
+    tile-probe failures no longer latched for the session, flyover replay
+    resets its progress bar, progress callbacks quantized to ~100 updates
+    per flight, and pin titles rendered via textContent. Verified clean:
+    the math libraries' degenerate-path guards, MapLibre v4 option shapes,
+    the mode/phase state machines, and deep-link clamping.
