@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" preserveAspectRatio="xMidYMid slice" role="img">
+<defs>
+  <linearGradient id="sky-tennis" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#33424a"/><stop offset="33.33333333333333%" stop-color="#6c6a5d"/><stop offset="66.66666666666666%" stop-color="#b3914f"/><stop offset="100%" stop-color="#dca74e"/></linearGradient>
+  <radialGradient id="glow-tennis" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#f6d588" stop-opacity="0.95"/>
+    <stop offset="45%" stop-color="#dca74e" stop-opacity="0.4"/>
+    <stop offset="100%" stop-color="#dca74e" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="vig-tennis" cx="50%" cy="42%" r="75%">
+    <stop offset="62%" stop-color="#000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#000" stop-opacity="0.38"/>
+  </radialGradient>
+  <linearGradient id="mistg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#dca74e" stop-opacity="0"/>
+    <stop offset="55%" stop-color="#dca74e" stop-opacity="0.8"/>
+    <stop offset="100%" stop-color="#dca74e" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="fwy" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#5f8048"/>
+    <stop offset="100%" stop-color="#4f6e3d"/>
+  </linearGradient>
+  <linearGradient id="fieldg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#445c36"/>
+    <stop offset="100%" stop-color="#33482b"/>
+  </linearGradient>
+  <linearGradient id="waterg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#33505e"/>
+    <stop offset="100%" stop-color="#16242c"/>
+  </linearGradient></defs>
+<rect width="1600" height="1200" fill="url(#sky-tennis)"/>
+<circle cx="1280" cy="312" r="64" fill="#f6d588" opacity="0.96"/>
+  <circle cx="1280" cy="312" r="281.6" fill="url(#glow-tennis)"/>
+<path d="M0 1200 L0 458 Q 44 457 67 456 Q 89 455 111 454 Q 133 452 156 450 Q 178 448 200 445 Q 222 443 244 440 Q 267 438 289 435 Q 311 433 333 430 Q 356 427 378 425 Q 400 422 422 419 Q 444 416 467 413 Q 489 409 511 406 Q 533 402 556 398 Q 578 394 600 389 Q 622 385 644 381 Q 667 378 689 374 Q 711 371 733 369 Q 756 367 778 367 Q 800 366 822 367 Q 844 368 867 371 Q 889 374 911 378 Q 933 382 956 387 Q 978 391 1000 396 Q 1022 401 1044 406 Q 1067 411 1089 414 Q 1111 418 1133 420 Q 1156 422 1178 423 Q 1200 423 1222 422 Q 1244 422 1267 420 Q 1289 418 1311 415 Q 1333 412 1356 410 Q 1378 407 1400 405 Q 1422 403 1444 402 Q 1467 401 1489 401 Q 1511 402 1533 403 Q 1556 405 1578 408 L1600 1200 Z" fill="#535d41" opacity="0.92"/><path d="M0 1200 L0 341 Q 44 337 67 335 Q 89 334 111 332 Q 133 330 156 328 Q 178 327 200 326 Q 222 324 244 324 Q 267 324 289 325 Q 311 326 333 328 Q 356 331 378 335 Q 400 340 422 345 Q 444 350 467 356 Q 489 361 511 367 Q 533 372 556 376 Q 578 380 600 383 Q 622 386 644 387 Q 667 388 689 388 Q 711 388 733 388 Q 756 388 778 387 Q 800 387 822 388 Q 844 388 867 389 Q 889 390 911 391 Q 933 393 956 394 Q 978 396 1000 397 Q 1022 398 1044 398 Q 1067 398 1089 398 Q 1111 397 1133 396 Q 1156 394 1178 393 Q 1200 391 1222 389 Q 1244 388 1267 387 Q 1289 386 1311 386 Q 1333 386 1356 387 Q 1378 388 1400 390 Q 1422 391 1444 392 Q 1467 393 1489 393 Q 1511 393 1533 392 Q 1556 391 1578 388 L1600 1200 Z" fill="#6a6f54" opacity="0.65"/><path d="M0 1200 L0 569 Q 44 578 67 582 Q 89 586 111 590 Q 133 593 156 597 Q 178 601 200 604 Q 222 607 244 610 Q 267 613 289 614 Q 311 616 333 616 Q 356 617 378 615 Q 400 613 422 609 Q 444 606 467 599 Q 489 593 511 585 Q 533 576 556 566 Q 578 556 600 545 Q 622 534 644 523 Q 667 512 689 501 Q 711 490 733 481 Q 756 472 778 465 Q 800 457 822 452 Q 844 447 867 444 Q 889 442 911 441 Q 933 440 956 441 Q 978 442 1000 444 Q 1022 446 1044 449 Q 1067 451 1089 454 Q 1111 457 1133 460 Q 1156 463 1178 466 Q 1200 469 1222 472 Q 1244 475 1267 479 Q 1289 483 1311 487 Q 1333 491 1356 497 Q 1378 502 1400 508 Q 1422 514 1444 521 Q 1467 528 1489 536 Q 1511 543 1533 551 Q 1556 558 1578 564 L1600 1200 Z" fill="#3e4b33" opacity="1"/><path d="M0 1200 L0 668 Q 44 668 67 667 Q 89 666 111 665 Q 133 664 156 663 Q 178 663 200 664 Q 222 665 244 667 Q 267 669 289 672 Q 311 675 333 678 Q 356 682 378 685 Q 400 688 422 690 Q 444 692 467 692 Q 489 693 511 692 Q 533 692 556 690 Q 578 688 600 687 Q 622 685 644 684 Q 667 683 689 683 Q 711 684 733 686 Q 756 688 778 692 Q 800 696 822 702 Q 844 708 867 714 Q 889 721 911 727 Q 933 733 956 738 Q 978 743 1000 746 Q 1022 748 1044 748 Q 1067 748 1089 746 Q 1111 743 1133 738 Q 1156 733 1178 727 Q 1200 720 1222 713 Q 1244 706 1267 699 Q 1289 692 1311 686 Q 1333 679 1356 674 Q 1378 669 1400 664 Q 1422 659 1444 655 Q 1467 650 1489 645 Q 1511 640 1533 634 Q 1556 628 1578 621 L1600 1200 Z" fill="#2c3826" opacity="1"/><path d="M0 1200 L0 838 Q 44 839 67 838 Q 89 837 111 836 Q 133 835 156 833 Q 178 831 200 829 Q 222 827 244 826 Q 267 824 289 824 Q 311 823 333 825 Q 356 826 378 829 Q 400 833 422 838 Q 444 843 467 850 Q 489 856 511 864 Q 533 871 556 879 Q 578 886 600 891 Q 622 897 644 900 Q 667 903 689 903 Q 711 902 733 898 Q 756 893 778 884 Q 800 875 822 862 Q 844 849 867 833 Q 889 817 911 799 Q 933 782 956 764 Q 978 746 1000 729 Q 1022 713 1044 699 Q 1067 685 1089 675 Q 1111 664 1133 658 Q 1156 652 1178 650 Q 1200 648 1222 649 Q 1244 651 1267 655 Q 1289 659 1311 664 Q 1333 670 1356 675 Q 1378 681 1400 686 Q 1422 691 1444 694 Q 1467 697 1489 698 Q 1511 699 1533 697 Q 1556 696 1578 693 L1600 1200 Z" fill="#1d281c" opacity="1"/>
+<rect x="0" y="542" width="1600" height="90" fill="url(#mistg)" opacity="0.2"/>
+<rect x="0" y="732.6565576791763" width="1600" height="467.34344232082367" fill="url(#fieldg)"/><ellipse cx="140" cy="808" rx="55" ry="69" fill="#141b13"/><ellipse cx="107" cy="791" rx="36" ry="46" fill="#141b13"/><ellipse cx="194" cy="812" rx="49" ry="61" fill="#141b13"/><ellipse cx="1466" cy="779" rx="33" ry="42" fill="#141b13"/><ellipse cx="1595" cy="760" rx="51" ry="63" fill="#141b13"/><ellipse cx="1563" cy="759" rx="70" ry="87" fill="#141b13"/><ellipse cx="1500" cy="770" rx="47" ry="58" fill="#141b13"/><ellipse cx="1505" cy="786" rx="35" ry="44" fill="#141b13"/>
+<rect x="0" y="706.6565576791763" width="1600" height="70" fill="url(#mistg)" opacity="0.12"/>
+<g transform="translate(800 758.6565576791763) scale(1.15)"><path d="M-150 -88 L0 -148 L150 -88 Z" fill="#0e120d"/><rect x="-132" y="-88" width="8" height="88" fill="#171d16"/><rect x="-68" y="-88" width="8" height="88" fill="#171d16"/><rect x="-4" y="-88" width="8" height="88" fill="#171d16"/><rect x="60" y="-88" width="8" height="88" fill="#171d16"/><rect x="124" y="-88" width="8" height="88" fill="#171d16"/><rect x="-150" y="-6" width="300" height="6" fill="#0e120d"/>
+      <rect x="-40" y="-70" width="80" height="40" fill="#e8b96a" opacity="0.5"/></g>
+
+<rect width="1600" height="1200" fill="url(#vig-tennis)"/>
+</svg>

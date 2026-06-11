@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img">
+  <circle cx="240" cy="240" r="234" fill="#101511"/>
+  <circle cx="240" cy="240" r="230" fill="none" stroke="#c2a35d" stroke-width="3"/>
+  <circle cx="240" cy="240" r="218" fill="none" stroke="#c2a35d" stroke-width="1.2" opacity="0.7"/>
+  <circle cx="240" cy="240" r="138" fill="#18211b" stroke="#c2a35d" stroke-width="1.5"/>
+  <g>
+    <path d="M 110.0 231.3 L 123.0 228.7 L 136.0 230.0 L 149.0 233.0 L 162.0 235.5 L 175.0 235.9 L 188.0 234.0 L 201.0 231.0 L 214.0 229.0 L 227.0 230.0 L 240.0 235.9 L 253.0 246.8 L 266.0 261.7 L 279.0 277.9 L 292.0 292.4 L 305.0 302.3 L 318.0 305.8 L 331.0 302.8 L 344.0 294.7 L 357.0 283.8 L 370.0 273.0" fill="none" stroke="#c2a35d" stroke-width="4" stroke-linecap="round"/>
+    <line x1="298" y1="236" x2="298" y2="176" stroke="#e9d9ac" stroke-width="3.4"/>
+    <path d="M 298 176 l 30 8 l -30 8 Z" fill="#e9d9ac"/>
+    <circle cx="176" cy="182" r="17" fill="#e9d9ac" opacity="0.9"/>
+    <text x="240" y="324" text-anchor="middle" font-family="Georgia, serif" font-size="64" letter-spacing="4" fill="#f2ede3">HR</text>
+  </g>
+  
+  <defs>
+    <path id="arcTop" d="M 72 240 A 168 168 0 0 1 408 240"/>
+    <path id="arcBot" d="M 72 240 A 168 168 0 0 0 408 240"/>
+  </defs>
+  <text font-family="Georgia, serif" font-size="27" letter-spacing="6" fill="#c2a35d">
+    <textPath href="#arcTop" startOffset="50%" text-anchor="middle">HIGHMARK RIDGE GOLF CLUB</textPath>
+  </text>
+  <text font-family="Georgia, serif" font-size="22" letter-spacing="8" fill="#c2a35d">
+    <textPath href="#arcBot" startOffset="50%" text-anchor="middle">· EST. 1929 ·</textPath>
+  </text>
+</svg>

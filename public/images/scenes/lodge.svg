@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" preserveAspectRatio="xMidYMid slice" role="img">
+<defs>
+  <linearGradient id="sky-lodge" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2c3e46"/><stop offset="33.33333333333333%" stop-color="#54565b"/><stop offset="66.66666666666666%" stop-color="#9a7d52"/><stop offset="100%" stop-color="#c98f4e"/></linearGradient>
+  <radialGradient id="glow-lodge" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#f0c878" stop-opacity="0.95"/>
+    <stop offset="45%" stop-color="#c98f4e" stop-opacity="0.4"/>
+    <stop offset="100%" stop-color="#c98f4e" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="vig-lodge" cx="50%" cy="42%" r="75%">
+    <stop offset="62%" stop-color="#000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#000" stop-opacity="0.38"/>
+  </radialGradient>
+  <linearGradient id="mistg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#c98f4e" stop-opacity="0"/>
+    <stop offset="55%" stop-color="#c98f4e" stop-opacity="0.8"/>
+    <stop offset="100%" stop-color="#c98f4e" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="fwy" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#557544"/>
+    <stop offset="100%" stop-color="#476439"/>
+  </linearGradient>
+  <linearGradient id="fieldg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#3c5234"/>
+    <stop offset="100%" stop-color="#2c3f27"/>
+  </linearGradient>
+  <linearGradient id="waterg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#33505e"/>
+    <stop offset="100%" stop-color="#16242c"/>
+  </linearGradient></defs>
+<rect width="1600" height="1200" fill="url(#sky-lodge)"/>
+<circle cx="1248" cy="288.00000000000006" r="64" fill="#f0c878" opacity="0.96"/>
+  <circle cx="1248" cy="288.00000000000006" r="281.6" fill="url(#glow-lodge)"/>
+<path d="M0 1200 L0 343 Q 44 352 67 358 Q 89 364 111 369 Q 133 375 156 379 Q 178 384 200 387 Q 222 390 244 392 Q 267 394 289 395 Q 311 396 333 397 Q 356 397 378 398 Q 400 399 422 400 Q 444 401 467 403 Q 489 405 511 407 Q 533 409 556 411 Q 578 413 600 415 Q 622 416 644 417 Q 667 417 689 417 Q 711 417 733 416 Q 756 416 778 415 Q 800 414 822 414 Q 844 415 867 416 Q 889 418 911 421 Q 933 424 956 429 Q 978 434 1000 440 Q 1022 446 1044 452 Q 1067 458 1089 463 Q 1111 468 1133 472 Q 1156 475 1178 477 Q 1200 478 1222 477 Q 1244 476 1267 473 Q 1289 470 1311 466 Q 1333 462 1356 457 Q 1378 452 1400 448 Q 1422 443 1444 439 Q 1467 435 1489 432 Q 1511 428 1533 425 Q 1556 422 1578 418 L1600 1200 Z" fill="#49543f" opacity="0.92"/><path d="M0 1200 L0 367 Q 44 364 67 361 Q 89 358 111 355 Q 133 352 156 349 Q 178 346 200 344 Q 222 341 244 339 Q 267 337 289 335 Q 311 334 333 332 Q 356 331 378 329 Q 400 327 422 324 Q 444 322 467 318 Q 489 315 511 311 Q 533 307 556 303 Q 578 299 600 296 Q 622 293 644 291 Q 667 289 689 289 Q 711 289 733 291 Q 756 293 778 297 Q 800 300 822 305 Q 844 310 867 314 Q 889 319 911 324 Q 933 328 956 332 Q 978 335 1000 338 Q 1022 341 1044 343 Q 1067 345 1089 347 Q 1111 348 1133 350 Q 1156 352 1178 355 Q 1200 357 1222 360 Q 1244 363 1267 366 Q 1289 369 1311 372 Q 1333 375 1356 376 Q 1378 378 1400 379 Q 1422 379 1444 379 Q 1467 378 1489 376 Q 1511 374 1533 371 Q 1556 369 1578 367 L1600 1200 Z" fill="#5d6657" opacity="0.65"/><path d="M0 1200 L0 519 Q 44 528 67 532 Q 89 536 111 540 Q 133 543 156 547 Q 178 550 200 554 Q 222 558 244 562 Q 267 566 289 571 Q 311 576 333 581 Q 356 586 378 591 Q 400 596 422 601 Q 444 605 467 608 Q 489 611 511 612 Q 533 614 556 613 Q 578 612 600 609 Q 622 606 644 601 Q 667 596 689 590 Q 711 583 733 575 Q 756 568 778 560 Q 800 552 822 545 Q 844 537 867 530 Q 889 524 911 518 Q 933 513 956 509 Q 978 505 1000 502 Q 1022 499 1044 497 Q 1067 495 1089 493 Q 1111 491 1133 489 Q 1156 487 1178 485 Q 1200 483 1222 480 Q 1244 477 1267 473 Q 1289 470 1311 466 Q 1333 462 1356 458 Q 1378 455 1400 452 Q 1422 449 1444 447 Q 1467 445 1489 445 Q 1511 444 1533 445 Q 1556 446 1578 448 L1600 1200 Z" fill="#36412f" opacity="1"/><path d="M0 1200 L0 693 Q 44 696 67 695 Q 89 695 111 692 Q 133 689 156 685 Q 178 681 200 676 Q 222 671 244 667 Q 267 662 289 658 Q 311 654 333 651 Q 356 648 378 646 Q 400 643 422 641 Q 444 639 467 637 Q 489 635 511 632 Q 533 629 556 625 Q 578 621 600 616 Q 622 611 644 605 Q 667 599 689 592 Q 711 585 733 579 Q 756 572 778 566 Q 800 560 822 556 Q 844 551 867 549 Q 889 546 911 545 Q 933 544 956 545 Q 978 546 1000 549 Q 1022 551 1044 554 Q 1067 557 1089 559 Q 1111 562 1133 564 Q 1156 566 1178 566 Q 1200 567 1222 566 Q 1244 565 1267 563 Q 1289 561 1311 558 Q 1333 555 1356 552 Q 1378 549 1400 546 Q 1422 543 1444 542 Q 1467 541 1489 541 Q 1511 541 1533 543 Q 1556 545 1578 549 L1600 1200 Z" fill="#273123" opacity="1"/><path d="M0 1200 L0 658 Q 44 657 67 654 Q 89 652 111 648 Q 133 644 156 639 Q 178 634 200 628 Q 222 623 244 618 Q 267 614 289 610 Q 311 606 333 604 Q 356 602 378 601 Q 400 601 422 602 Q 444 603 467 606 Q 489 608 511 612 Q 533 616 556 620 Q 578 624 600 629 Q 622 634 644 640 Q 667 645 689 651 Q 711 657 733 664 Q 756 671 778 678 Q 800 686 822 695 Q 844 704 867 714 Q 889 724 911 735 Q 933 746 956 758 Q 978 769 1000 780 Q 1022 792 1044 802 Q 1067 811 1089 819 Q 1111 827 1133 831 Q 1156 836 1178 836 Q 1200 837 1222 834 Q 1244 830 1267 823 Q 1289 816 1311 805 Q 1333 795 1356 782 Q 1378 769 1400 756 Q 1422 742 1444 728 Q 1467 715 1489 703 Q 1511 691 1533 681 Q 1556 672 1578 665 L1600 1200 Z" fill="#1a221a" opacity="1"/>
+<rect x="0" y="518" width="1600" height="90" fill="url(#mistg)" opacity="0.2"/>
+<rect x="0" y="676.9903758652508" width="1600" height="523.0096241347492" fill="url(#fieldg)"/><ellipse cx="94" cy="750" rx="48" ry="61" fill="#141b13"/><ellipse cx="106" cy="755" rx="35" ry="44" fill="#141b13"/><ellipse cx="121" cy="752" rx="29" ry="36" fill="#141b13"/><ellipse cx="1595" cy="732" rx="56" ry="70" fill="#141b13"/><ellipse cx="1466" cy="733" rx="72" ry="90" fill="#141b13"/><ellipse cx="1479" cy="731" rx="40" ry="51" fill="#141b13"/>
+<rect x="0" y="650.9903758652508" width="1600" height="70" fill="url(#mistg)" opacity="0.12"/>
+<g transform="translate(800 702.9903758652508) scale(1.15)"><rect x="-260" y="-120" width="520" height="120" fill="#171d16"/>
+      <path d="M-290 -120 L0 -228 L290 -120 Z" fill="#0e120d"/>
+      <rect x="-30" y="-282" width="60" height="80" fill="#0e120d"/><rect x="-238" y="-96" width="30" height="52" fill="#c79a55" opacity="0.92"/><rect x="-166" y="-96" width="30" height="52" fill="#e8b96a" opacity="0.92"/><rect x="-94" y="-96" width="30" height="52" fill="#c79a55" opacity="0.92"/><rect x="-22" y="-96" width="30" height="52" fill="#e8b96a" opacity="0.92"/><rect x="50" y="-96" width="30" height="52" fill="#c79a55" opacity="0.92"/><rect x="122" y="-96" width="30" height="52" fill="#e8b96a" opacity="0.92"/><rect x="194" y="-96" width="30" height="52" fill="#c79a55" opacity="0.92"/><rect x="-26" y="-196" width="52" height="60" fill="#e8b96a" opacity="0.85"/></g>
+
+<rect width="1600" height="1200" fill="url(#vig-lodge)"/>
+</svg>

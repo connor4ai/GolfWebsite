@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" preserveAspectRatio="xMidYMid slice" role="img">
+<defs>
+  <linearGradient id="sky-cottages" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#33424a"/><stop offset="33.33333333333333%" stop-color="#6c6a5d"/><stop offset="66.66666666666666%" stop-color="#b3914f"/><stop offset="100%" stop-color="#dca74e"/></linearGradient>
+  <radialGradient id="glow-cottages" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#f6d588" stop-opacity="0.95"/>
+    <stop offset="45%" stop-color="#dca74e" stop-opacity="0.4"/>
+    <stop offset="100%" stop-color="#dca74e" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="vig-cottages" cx="50%" cy="42%" r="75%">
+    <stop offset="62%" stop-color="#000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#000" stop-opacity="0.38"/>
+  </radialGradient>
+  <linearGradient id="mistg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#dca74e" stop-opacity="0"/>
+    <stop offset="55%" stop-color="#dca74e" stop-opacity="0.8"/>
+    <stop offset="100%" stop-color="#dca74e" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="fwy" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#5f8048"/>
+    <stop offset="100%" stop-color="#4f6e3d"/>
+  </linearGradient>
+  <linearGradient id="fieldg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#445c36"/>
+    <stop offset="100%" stop-color="#33482b"/>
+  </linearGradient>
+  <linearGradient id="waterg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#33505e"/>
+    <stop offset="100%" stop-color="#16242c"/>
+  </linearGradient></defs>
+<rect width="1600" height="1200" fill="url(#sky-cottages)"/>
+<circle cx="288" cy="312" r="64" fill="#f6d588" opacity="0.96"/>
+  <circle cx="288" cy="312" r="281.6" fill="url(#glow-cottages)"/>
+<path d="M0 1200 L0 472 Q 44 482 67 485 Q 89 488 111 490 Q 133 492 156 492 Q 178 493 200 493 Q 222 493 244 493 Q 267 493 289 493 Q 311 493 333 493 Q 356 493 378 493 Q 400 493 422 493 Q 444 493 467 491 Q 489 490 511 487 Q 533 484 556 480 Q 578 475 600 468 Q 622 462 644 454 Q 667 446 689 438 Q 711 429 733 420 Q 756 412 778 404 Q 800 396 822 390 Q 844 384 867 380 Q 889 375 911 373 Q 933 370 956 369 Q 978 368 1000 369 Q 1022 369 1044 369 Q 1067 370 1089 370 Q 1111 371 1133 372 Q 1156 372 1178 372 Q 1200 373 1222 373 Q 1244 373 1267 374 Q 1289 375 1311 378 Q 1333 380 1356 383 Q 1378 387 1400 391 Q 1422 396 1444 402 Q 1467 409 1489 415 Q 1511 422 1533 429 Q 1556 435 1578 441 L1600 1200 Z" fill="#535d41" opacity="0.92"/><path d="M0 1200 L0 399 Q 44 404 67 407 Q 89 410 111 414 Q 133 418 156 422 Q 178 425 200 429 Q 222 432 244 434 Q 267 437 289 437 Q 311 438 333 437 Q 356 436 378 433 Q 400 430 422 426 Q 444 421 467 417 Q 489 412 511 407 Q 533 403 556 399 Q 578 395 600 392 Q 622 389 644 387 Q 667 385 689 384 Q 711 382 733 380 Q 756 379 778 377 Q 800 374 822 372 Q 844 369 867 365 Q 889 361 911 357 Q 933 354 956 350 Q 978 346 1000 344 Q 1022 341 1044 339 Q 1067 338 1089 338 Q 1111 338 1133 340 Q 1156 341 1178 344 Q 1200 346 1222 348 Q 1244 350 1267 352 Q 1289 354 1311 354 Q 1333 355 1356 354 Q 1378 353 1400 352 Q 1422 350 1444 349 Q 1467 347 1489 345 Q 1511 343 1533 342 Q 1556 341 1578 341 L1600 1200 Z" fill="#6a6f54" opacity="0.65"/><path d="M0 1200 L0 568 Q 44 576 67 579 Q 89 583 111 587 Q 133 590 156 593 Q 178 596 200 599 Q 222 601 244 603 Q 267 605 289 606 Q 311 607 333 608 Q 356 609 378 610 Q 400 611 422 612 Q 444 612 467 612 Q 489 613 511 612 Q 533 612 556 611 Q 578 610 600 607 Q 622 605 644 601 Q 667 597 689 592 Q 711 586 733 579 Q 756 572 778 563 Q 800 554 822 545 Q 844 536 867 526 Q 889 516 911 507 Q 933 498 956 490 Q 978 482 1000 477 Q 1022 471 1044 467 Q 1067 464 1089 463 Q 1111 462 1133 463 Q 1156 465 1178 468 Q 1200 471 1222 475 Q 1244 480 1267 485 Q 1289 489 1311 494 Q 1333 498 1356 502 Q 1378 505 1400 507 Q 1422 508 1444 508 Q 1467 508 1489 506 Q 1511 504 1533 501 Q 1556 498 1578 493 L1600 1200 Z" fill="#3e4b33" opacity="1"/><path d="M0 1200 L0 680 Q 44 686 67 689 Q 89 691 111 692 Q 133 693 156 692 Q 178 692 200 690 Q 222 688 244 686 Q 267 683 289 680 Q 311 678 333 675 Q 356 673 378 672 Q 400 671 422 671 Q 444 671 467 672 Q 489 673 511 675 Q 533 677 556 678 Q 578 679 600 680 Q 622 680 644 678 Q 667 676 689 671 Q 711 667 733 659 Q 756 652 778 641 Q 800 631 822 618 Q 844 606 867 592 Q 889 579 911 565 Q 933 552 956 539 Q 978 527 1000 517 Q 1022 508 1044 501 Q 1067 494 1089 490 Q 1111 487 1133 486 Q 1156 485 1178 487 Q 1200 489 1222 493 Q 1244 497 1267 502 Q 1289 507 1311 512 Q 1333 518 1356 524 Q 1378 529 1400 535 Q 1422 541 1444 547 Q 1467 553 1489 560 Q 1511 567 1533 576 Q 1556 584 1578 594 L1600 1200 Z" fill="#2c3826" opacity="1"/><path d="M0 1200 L0 630 Q 44 629 67 628 Q 89 627 111 627 Q 133 627 156 626 Q 178 626 200 627 Q 222 628 244 630 Q 267 632 289 636 Q 311 640 333 646 Q 356 652 378 661 Q 400 669 422 681 Q 444 692 467 706 Q 489 719 511 734 Q 533 750 556 766 Q 578 782 600 797 Q 622 813 644 827 Q 667 842 689 854 Q 711 866 733 874 Q 756 883 778 888 Q 800 894 822 895 Q 844 896 867 894 Q 889 892 911 888 Q 933 883 956 876 Q 978 869 1000 861 Q 1022 853 1044 845 Q 1067 837 1089 830 Q 1111 823 1133 817 Q 1156 811 1178 806 Q 1200 802 1222 799 Q 1244 796 1267 794 Q 1289 793 1311 792 Q 1333 791 1356 791 Q 1378 790 1400 790 Q 1422 789 1444 788 Q 1467 786 1489 784 Q 1511 782 1533 779 Q 1556 776 1578 772 L1600 1200 Z" fill="#1d281c" opacity="1"/>
+<rect x="0" y="542" width="1600" height="90" fill="url(#mistg)" opacity="0.2"/>
+<rect x="0" y="736.7140223346651" width="1600" height="463.28597766533494" fill="url(#fieldg)"/><ellipse cx="137" cy="812" rx="41" ry="52" fill="#141b13"/><ellipse cx="39" cy="816" rx="42" ry="53" fill="#141b13"/><ellipse cx="149" cy="817" rx="63" ry="79" fill="#141b13"/><ellipse cx="122" cy="816" rx="50" ry="63" fill="#141b13"/><ellipse cx="172" cy="814" rx="38" ry="48" fill="#141b13"/><ellipse cx="1456" cy="785" rx="64" ry="80" fill="#141b13"/><ellipse cx="1398" cy="780" rx="34" ry="42" fill="#141b13"/><ellipse cx="1391" cy="773" rx="53" ry="66" fill="#141b13"/><ellipse cx="1307" cy="755" rx="23" ry="29" fill="#1a2418"/><ellipse cx="1283" cy="755" rx="32" ry="40" fill="#1a2418"/><ellipse cx="1284" cy="741" rx="25" ry="31" fill="#1a2418"/><ellipse cx="1261" cy="742" rx="41" ry="51" fill="#1a2418"/>
+<rect x="0" y="710.7140223346651" width="1600" height="70" fill="url(#mistg)" opacity="0.12"/>
+<g transform="translate(384 766.7140223346651) scale(0.95)"><rect x="-95" y="-70" width="190" height="70" fill="#171d16"/>
+      <path d="M-112 -70 L0 -136 L112 -70 Z" fill="#0e120d"/>
+      <rect x="46" y="-128" width="18" height="42" fill="#0e120d"/><rect x="-62" y="-52" width="28" height="36" fill="#e8b96a" opacity="0.92"/><rect x="20" y="-52" width="28" height="36" fill="#c79a55" opacity="0.92"/></g><g transform="translate(800 774.7140223346651) scale(0.83)"><rect x="-95" y="-70" width="190" height="70" fill="#171d16"/>
+      <path d="M-112 -70 L0 -136 L112 -70 Z" fill="#0e120d"/>
+      <rect x="46" y="-128" width="18" height="42" fill="#0e120d"/><rect x="-62" y="-52" width="28" height="36" fill="#e8b96a" opacity="0.92"/><rect x="20" y="-52" width="28" height="36" fill="#c79a55" opacity="0.92"/></g><g transform="translate(1216 782.7140223346651) scale(0.71)"><rect x="-95" y="-70" width="190" height="70" fill="#171d16"/>
+      <path d="M-112 -70 L0 -136 L112 -70 Z" fill="#0e120d"/>
+      <rect x="46" y="-128" width="18" height="42" fill="#0e120d"/><rect x="-62" y="-52" width="28" height="36" fill="#e8b96a" opacity="0.92"/><rect x="20" y="-52" width="28" height="36" fill="#c79a55" opacity="0.92"/></g>
+
+<rect width="1600" height="1200" fill="url(#vig-cottages)"/>
+</svg>

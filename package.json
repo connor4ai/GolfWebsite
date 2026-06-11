@@ -1,0 +1,32 @@
+{
+  "name": "fairway-template",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FAIRWAY — premium config-driven golf course & resort website template",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "art": "node scripts/generate-art.mjs",
+    "verify:routes": "node scripts/verify-routes.mjs"
+  },
+  "dependencies": {
+    "framer-motion": "^11.11.17",
+    "maplibre-gl": "^4.7.1",
+    "next": "^14.2.21",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.9",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.21",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.7.2"
+  }
+}
