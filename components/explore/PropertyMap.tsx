@@ -44,7 +44,6 @@ export function PropertyMap({
   onSelectRef.current = onSelect;
   const onTourEndRef = useRef(onTourEnd);
   onTourEndRef.current = onTourEnd;
-  const interactedRef = useRef(false);
 
   // -- init (once) ----------------------------------------------------------
   useEffect(() => {
@@ -79,12 +78,7 @@ export function PropertyMap({
       "bottom-right"
     );
 
-    const markInteract = () => {
-      interactedRef.current = true;
-    };
-    map.on("mousedown", markInteract);
-    map.on("touchstart", markInteract);
-    map.on("wheel", markInteract);
+    // (user interaction is detected via movestart.originalEvent below)
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     map.once("load", () => {
@@ -101,20 +95,22 @@ export function PropertyMap({
       }
     });
 
-    // Idle cinema: an almost-still orbit when the visitor rests.
+    // Idle cinema: an almost-still orbit when the visitor rests. Only
+    // *user* gestures reset the idle clock (movestart.originalEvent), and
+    // the drift never touches the camera mid-animation — setBearing calls
+    // jumpTo, which would cancel an in-flight easeTo/flyTo (arrival, pin
+    // selection, the tour).
     let idleRaf = 0;
     let lastInteract = performance.now();
-    const noteActivity = () => {
-      lastInteract = performance.now();
-    };
-    map.on("move", () => {
-      if (interactedRef.current) noteActivity();
+    map.on("movestart", (e) => {
+      if ((e as { originalEvent?: Event }).originalEvent) {
+        lastInteract = performance.now();
+      }
     });
     if (!reduced) {
       const drift = (now: number) => {
         if (!mapRef.current) return;
-        const idleFor = now - lastInteract;
-        if (idleFor > 9000 && !document.hidden) {
+        if (now - lastInteract > 9000 && !document.hidden && !map.isMoving()) {
           map.setBearing(map.getBearing() + 0.012);
         }
         idleRaf = requestAnimationFrame(drift);
@@ -160,8 +156,17 @@ export function PropertyMap({
       el?.classList.toggle("pin-selected", selected?.id === pin.id);
       el?.setAttribute("aria-pressed", String(selected?.id === pin.id));
     }
-    if (!map || !selected || touring) return;
+    if (!map) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!selected) {
+      // Camera padding persists on the transform; clear it when the panel
+      // closes or the tour/idle orbit frames off-center forever after.
+      const zero = { top: 0, bottom: 0, left: 0, right: 0 };
+      if (reduced) map.jumpTo({ padding: zero });
+      else map.easeTo({ padding: zero, duration: 600 });
+      return;
+    }
+    if (touring) return;
     const desktop = window.matchMedia("(min-width: 768px)").matches;
     const padding = desktop
       ? { top: 90, bottom: 40, left: 40, right: 470 }
@@ -233,6 +238,7 @@ export function PropertyMap({
     return () => {
       cancelled = true;
       window.clearTimeout(timer);
+      map.stop(); // halt the in-flight flyTo when "Stop the tour" is pressed
       map.off("mousedown", stopTour);
       map.off("wheel", stopTour);
       map.off("touchstart", stopTour);

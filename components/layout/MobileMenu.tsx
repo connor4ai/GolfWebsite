@@ -3,7 +3,8 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useRM } from "@/components/ui/useRM";
 import { site, navItems, bookingCta } from "@/lib/site";
 import { useFocusTrap } from "@/components/ui/useFocusTrap";
 
@@ -26,7 +27,7 @@ function MenuCta() {
 /** Full-screen menu (all viewports) with staggered reveal. */
 export function MobileMenu({ onClose }: { onClose: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduced = useReducedMotion();
+  const reduced = useRM();
   useFocusTrap(ref);
 
   useEffect(() => {

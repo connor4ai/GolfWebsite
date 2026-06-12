@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import type { ImageAsset } from "@/config/types";
 import { site } from "@/lib/site";
-import { checkTileHealth, type TileHealth } from "@/lib/map/tile-health";
+import { checkTileHealth } from "@/lib/map/tile-health";
 import { snapshotSatellite } from "@/lib/map/static-snapshot";
 
 /**
@@ -56,8 +56,6 @@ export function SmartImage({
   );
 }
 
-let healthPromise: Promise<TileHealth> | null = null;
-
 function SatCrop({
   asset,
   imgClassName,
@@ -69,6 +67,7 @@ function SatCrop({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [url, setUrl] = useState<string | null>(null);
+  const [credit, setCredit] = useState("");
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
@@ -82,14 +81,19 @@ function SatCrop({
       if (started) return;
       started = true;
       try {
-        healthPromise ??= checkTileHealth(sat.center);
-        const health = await healthPromise;
+        // tile-health memoizes successes and re-probes after failures —
+        // never cache its result here or one offline blip at first paint
+        // would blank every aerial slot for the whole session.
+        const health = await checkTileHealth(sat.center);
         if (!health.imagery) throw new Error("no imagery");
         const rect = el.getBoundingClientRect();
         const w = Math.min(1280, Math.max(480, Math.round(rect.width || 800)));
         const h = Math.min(1280, Math.max(360, Math.round(rect.height || 600)));
         const dataUrl = await snapshotSatellite(health.imagery, health.terrain, sat, w, h);
-        if (alive) setUrl(dataUrl);
+        if (alive) {
+          setCredit(health.imagery.name);
+          setUrl(dataUrl);
+        }
       } catch {
         if (alive) setFailed(true);
       }
@@ -134,8 +138,11 @@ function SatCrop({
         />
       )}
       {url && aerialLabel && (
-        <span className="pointer-events-none absolute bottom-2 right-2 bg-night/55 px-2 py-0.5 text-[0.5rem] uppercase tracking-luxe text-cream/70 backdrop-blur-sm">
-          Aerial
+        <span
+          title={`Aerial imagery © ${credit}`}
+          className="pointer-events-none absolute bottom-2 right-2 bg-night/55 px-2 py-0.5 text-[0.5rem] uppercase tracking-luxe text-cream/70 backdrop-blur-sm"
+        >
+          Aerial © {credit}
         </span>
       )}
     </div>

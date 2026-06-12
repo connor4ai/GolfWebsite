@@ -28,7 +28,7 @@ export function Preloader() {
     setShow(true);
     document.body.style.overflow = "hidden";
     const t0 = performance.now();
-    const DURATION = 1700;
+    const DURATION = 1100;
     let raf = 0;
     const tick = (now: number) => {
       const t = Math.min(1, (now - t0) / DURATION);
@@ -38,7 +38,7 @@ export function Preloader() {
         window.setTimeout(() => {
           setShow(false);
           document.body.style.overflow = "";
-        }, 250);
+        }, 200);
       }
     };
     raf = requestAnimationFrame(tick);
@@ -69,7 +69,7 @@ export function Preloader() {
               width={88}
               height={88}
               priority
-              className="h-22 w-22"
+              className="h-[88px] w-[88px]"
             />
             <p className="font-display text-2xl tracking-wide text-cream">
               {site.identity.shortName}

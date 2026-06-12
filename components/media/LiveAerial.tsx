@@ -29,6 +29,7 @@ export function LiveAerial({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [failed, setFailed] = useState(false);
+  const [credit, setCredit] = useState<string | null>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -78,25 +79,40 @@ export function LiveAerial({
           bearing: view.bearing ?? 0,
           pitch: view.pitch ?? 0,
           interactive: false,
-          attributionControl: { compact: true },
+          // The decorative wrapper is aria-hidden, so the control's anchor
+          // tags would violate aria-hidden-focus; credit renders as static
+          // text below instead.
+          attributionControl: false,
           fadeDuration: 180,
         });
+        setCredit(health.imagery.name);
       } catch {
         setFailed(true);
         return;
       }
 
       if (!reduced) {
+        // Keep observing: the drift (and its GPU cost) pauses off-screen.
+        let onScreen = true;
+        io = new IntersectionObserver(
+          (entries) => {
+            onScreen = entries.some((e) => e.isIntersecting);
+          },
+          { rootMargin: "150px" }
+        );
+        io.observe(el);
         const t0 = performance.now();
         const b0 = view.bearing ?? 0;
         const z0 = view.zoom;
         const drift = (now: number) => {
           if (!alive || !map) return;
-          const t = (now - t0) / 1000;
-          map.jumpTo({
-            bearing: (b0 + t * driftDegPerSec) % 360,
-            zoom: z0 + Math.sin(t / 14) * 0.12,
-          });
+          if (onScreen && !document.hidden) {
+            const t = (now - t0) / 1000;
+            map.jumpTo({
+              bearing: (b0 + t * driftDegPerSec) % 360,
+              zoom: z0 + Math.sin(t / 14) * 0.12,
+            });
+          }
           raf = requestAnimationFrame(drift);
         };
         map.once("load", () => {
@@ -129,6 +145,11 @@ export function LiveAerial({
           <div className="pointer-events-none absolute inset-0 [background:radial-gradient(120%_90%_at_50%_10%,transparent_55%,rgb(var(--c-bg)/0.55)_100%)]" />
           <div className="film-grain pointer-events-none absolute inset-0" />
         </>
+      )}
+      {credit && (
+        <span className="pointer-events-none absolute bottom-1.5 right-2 text-[0.5rem] tracking-wide text-cream/45">
+          Imagery © {credit} · Terrain: AWS Open Data
+        </span>
       )}
     </div>
   );

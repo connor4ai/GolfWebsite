@@ -1,14 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useRM } from "@/components/ui/useRM";
 import { site } from "@/lib/site";
 import { AudioToggle } from "./AudioToggle";
 import { LiveAerial } from "@/components/media/LiveAerial";
 
 /** Cinematic landing veil over the explore map. */
 export function EntryOverlay({ onEnter }: { onEnter: () => void }) {
-  const reduced = useReducedMotion();
+  const reduced = useRM();
   const entry = site.propertyMap.entry;
 
   const rise = (delay: number) =>

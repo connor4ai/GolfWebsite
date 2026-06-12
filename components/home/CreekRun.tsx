@@ -1,13 +1,9 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRM } from "@/components/ui/useRM";
 import { defaultCourse } from "@/lib/site";
 import { SmartImage } from "@/components/media/SmartImage";
 
@@ -21,9 +17,23 @@ export function CreekRun() {
   const course = defaultCourse();
   const holes = course.holes.slice(-6);
   const ref = useRef<HTMLDivElement>(null);
-  const reduced = useReducedMotion();
+  const trackRef = useRef<HTMLDivElement>(null);
+  const reduced = useRM();
   const { scrollYProgress } = useScroll({ target: ref });
-  const x = useTransform(scrollYProgress, [0.06, 0.94], ["2%", "-68%"]);
+  // Lateral travel measured in pixels — percentage travel resolves against
+  // the track's own width and clips the final cards on narrow viewports.
+  const [range, setRange] = useState(0);
+  useEffect(() => {
+    const measure = () => {
+      const track = trackRef.current;
+      if (!track) return;
+      setRange(Math.max(0, track.scrollWidth - window.innerWidth + 24));
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [reduced]);
+  const x = useTransform(scrollYProgress, [0.06, 0.94], [16, -range]);
 
   if (holes.length < 3) return null;
   const first = holes[0].number;
@@ -105,10 +115,14 @@ export function CreekRun() {
   return (
     <section ref={ref} className="relative h-[340vh] border-y hairline bg-raised/20">
       <div className="sticky top-0 flex h-[100dvh] items-center overflow-hidden">
-        <motion.div style={{ x }} className="flex items-stretch gap-6 pl-6 md:pl-10">
+        <motion.div
+          ref={trackRef}
+          style={{ x }}
+          className="flex items-stretch gap-6 pl-6 md:pl-10"
+        >
           {intro}
           {cards}
-          <div className="w-[20vw] flex-shrink-0" aria-hidden />
+          <div className="w-6 flex-shrink-0 md:w-10" aria-hidden />
         </motion.div>
       </div>
     </section>

@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView, useReducedMotion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRM } from "@/components/ui/useRM";
 import { site, defaultCourse, yardageTotal } from "@/lib/site";
 
 interface Stat {
@@ -48,8 +49,8 @@ export function NumbersStrip() {
 function Counter({ stat }: { stat: Stat }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
-  const reduced = useReducedMotion();
-  const [display, setDisplay] = useState(reduced ? stat.value : 0);
+  const reduced = useRM();
+  const [display, setDisplay] = useState(0);
 
   useEffect(() => {
     if (!inView) return;

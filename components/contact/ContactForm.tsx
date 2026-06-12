@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useRM } from "@/components/ui/useRM";
 import { site } from "@/lib/site";
 
 interface FieldErrors {
@@ -20,7 +21,7 @@ const inputClass =
  * at deployment — see docs/REPOPULATE.md).
  */
 export function ContactForm({ initialTopic }: { initialTopic?: string }) {
-  const reduced = useReducedMotion();
+  const reduced = useRM();
   const topics = useMemo(() => {
     const list = ["General", "Tee times", "Group outings"];
     if (site.flags.hasLodging) list.push("Stay");

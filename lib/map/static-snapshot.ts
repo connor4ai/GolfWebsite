@@ -68,6 +68,12 @@ export function snapshotSatellite(
           delete style.terrain;
           delete style.sources["terrain-dem"];
         }
+        // When the terrain host is unhealthy, hillshade tiles would hang
+        // the 'idle' event and time out every snapshot — strip them too.
+        if (!terrainOk) {
+          delete style.sources["hillshade-dem"];
+          style.layers = style.layers.filter((l) => l.id !== "hillshade");
+        }
 
         let settled = false;
         const finish = (fn: () => void) => {
@@ -78,19 +84,27 @@ export function snapshotSatellite(
           container.remove();
         };
 
-        const map = new maplibregl.Map({
-          container,
-          style,
-          center: [view.center.lng, view.center.lat],
-          zoom: view.zoom,
-          bearing: view.bearing ?? 0,
-          pitch: view.pitch ?? 0,
-          interactive: false,
-          attributionControl: false,
-          fadeDuration: 0,
-          // required for toDataURL (MapLibre v4 option shape)
-          preserveDrawingBuffer: true,
-        });
+        let map: maplibregl.Map;
+        try {
+          map = new maplibregl.Map({
+            container,
+            style,
+            center: [view.center.lng, view.center.lat],
+            zoom: view.zoom,
+            bearing: view.bearing ?? 0,
+            pitch: view.pitch ?? 0,
+            interactive: false,
+            attributionControl: false,
+            fadeDuration: 0,
+            // required for toDataURL (MapLibre v4 option shape)
+            preserveDrawingBuffer: true,
+          });
+        } catch (e) {
+          // WebGL context exhaustion etc. — don't orphan the container.
+          container.remove();
+          reject(e as Error);
+          return;
+        }
 
         const timeout = window.setTimeout(
           () => finish(() => reject(new Error("snapshot timeout"))),

@@ -6,7 +6,8 @@ export function AccoladeMarquee() {
     a.quote ? `“${a.quote}” — ${a.source}` : `${a.source} · ${a.year}`
   );
   if (items.length === 0) return null;
-  const row = [...items, ...items];
+  // 4× so the 50% loop point is seamless even on ultrawide displays.
+  const row = [...items, ...items, ...items, ...items];
 
   return (
     <section

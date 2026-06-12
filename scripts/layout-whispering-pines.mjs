@@ -68,7 +68,7 @@ const HOLES = [
   { n: 6, par: 4, segs: [{ b: 168, d: 425 }], walkB: 205, walk: 34 },
   { n: 7, par: 3, segs: [{ b: 243, d: 230 }], walkB: 270, walk: 30 },
   { n: 8, par: 5, segs: [{ b: 178, d: 320 }, { b: 160, d: 275 }], walkB: 285, walk: 40 },
-  { n: 9, par: 4, homeRun: { len: 435, minStop: 110 } }, // home to the east porch
+  { n: 9, par: 4, homeRun: { len: 435, minStop: 110 }, walkB: 150, walk: 42 }, // home to the east porch
   // ---- back nine: south, then the serpentine Caney Creek run ----------
   { n: 10, par: 4, segs: [{ b: 188, d: 430 }], walkB: 150, walk: 36 },
   { n: 11, par: 5, segs: [{ b: 165, d: 320 }, { b: 145, d: 225 }], walkB: 70, walk: 34 },

@@ -155,6 +155,11 @@ body {
   -webkit-text-stroke: 1px rgb(var(--c-accent) / 0.35);
   color: transparent;
 }
+@supports not (-webkit-text-stroke: 1px #000) {
+  .ghost-numeral {
+    color: rgb(var(--c-accent) / 0.18);
+  }
+}
 
 /* ------------------------------------------------------------------ */
 /* MapLibre chrome, restyled to match the brand                        */

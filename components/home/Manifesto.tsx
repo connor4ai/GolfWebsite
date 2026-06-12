@@ -5,9 +5,9 @@ import {
   motion,
   useScroll,
   useTransform,
-  useReducedMotion,
   type MotionValue,
 } from "framer-motion";
+import { useRM } from "@/components/ui/useRM";
 import { site } from "@/lib/site";
 
 /**
@@ -17,10 +17,10 @@ import { site } from "@/lib/site";
 export function Manifesto() {
   const text = site.identity.manifesto;
   const ref = useRef<HTMLDivElement>(null);
-  const reduced = useReducedMotion();
+  const reduced = useRM();
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 0.85", "end 0.35"],
+    offset: ["start 0.85", "end 0.65"],
   });
 
   if (!text) return null;

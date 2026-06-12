@@ -3,14 +3,15 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { SmartImage } from "@/components/media/SmartImage";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useRM } from "@/components/ui/useRM";
 import type { MapPin } from "@/config/types";
 import { CATEGORY_LABEL } from "@/lib/site";
 import { useFocusTrap } from "@/components/ui/useFocusTrap";
 
 /** Slide-in detail panel for a selected map pin. */
 export function PinPanel({ pin, onClose }: { pin: MapPin; onClose: () => void }) {
-  const reduced = useReducedMotion();
+  const reduced = useRM();
   const rootRef = useRef<HTMLElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   // Parent passes an inline onClose; keep it in a ref so re-renders (e.g.

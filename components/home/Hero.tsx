@@ -2,12 +2,8 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRM } from "@/components/ui/useRM";
 import { site, defaultCourse, bookingCta } from "@/lib/site";
 import { LiveAerial } from "@/components/media/LiveAerial";
 
@@ -18,7 +14,7 @@ import { LiveAerial } from "@/components/media/LiveAerial";
  * the classic award-site entrance, in the club's voice.
  */
 export function Hero() {
-  const reduced = useReducedMotion();
+  const reduced = useRM();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -44,6 +40,8 @@ export function Hero() {
   const cta = bookingCta();
   const words = site.identity.shortName.split(" ");
 
+  // Delays sit just past the first-visit preloader lift (~1.4s) so the
+  // masked-line entrance is actually witnessed, not spent behind the veil.
   const lineReveal = (i: number) =>
     reduced
       ? {}
@@ -52,7 +50,7 @@ export function Hero() {
           animate: { y: "0%" },
           transition: {
             duration: 1.1,
-            delay: 0.35 + i * 0.14,
+            delay: 0.55 + i * 0.16,
             ease: [0.22, 1, 0.36, 1] as const,
           },
         };
@@ -81,14 +79,14 @@ export function Hero() {
         style={reduced ? undefined : { y: titleY, opacity: titleOpacity }}
         className="relative mx-auto w-full max-w-[100rem] px-6 pb-20 pt-44 md:px-10 md:pb-28"
       >
-        <motion.p {...fade(0.25)} className="eyebrow">
+        <motion.p {...fade(0.45)} className="eyebrow">
           Trinity, Texas · Est. {site.identity.established} ·{" "}
           {site.flags.courseAccess === "private" ? "A private club" : site.identity.tagline}
         </motion.p>
 
         <h1 className="mt-6 font-display font-medium leading-[0.96] text-cream">
           {words.map((word, i) => (
-            <span key={word} className="line-mask">
+            <span key={`${word}-${i}`} className="line-mask">
               <motion.span
                 {...lineReveal(i)}
                 className="block text-[clamp(3.4rem,11.5vw,10rem)]"
@@ -100,12 +98,12 @@ export function Hero() {
         </h1>
 
         <div className="mt-8 flex flex-wrap items-end justify-between gap-8">
-          <motion.p {...fade(0.8)} className="lede max-w-xl">
+          <motion.p {...fade(1.0)} className="lede max-w-xl">
             {site.identity.tagline} — {course.holes.length} holes of Chet
             Williams golf in the East Texas pines, where Caney Creek meets
             the headwaters of Lake Livingston.
           </motion.p>
-          <motion.div {...fade(0.95)} className="flex flex-wrap gap-4">
+          <motion.div {...fade(1.15)} className="flex flex-wrap gap-4">
             <Link href="/explore" className="btn-primary">
               Explore the Property
             </Link>

@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useRM } from "@/components/ui/useRM";
 import type { CourseInfo } from "@/config/types";
 import { checkTileHealth, type TileHealth } from "@/lib/map/tile-health";
 import type { FlyoverPhase } from "@/lib/map/flyover";
@@ -22,7 +23,7 @@ export function FlyoverExperience({
   course: CourseInfo;
   initialHole: number;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useRM();
   const [idx, setIdx] = useState(() =>
     Math.min(Math.max(initialHole - 1, 0), course.holes.length - 1)
   );
