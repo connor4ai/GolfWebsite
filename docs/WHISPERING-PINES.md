@@ -126,3 +126,23 @@ To drop in photography: set `src` on any asset in
 - [ ] Confirm membership-inquiry routing (currently contact form + phone)
 - [ ] DNS/hosting cutover to whisperingpinesgolfclub.com
 - [ ] Replace og-image.png; re-run `npm run build && npm run verify:routes`
+
+## 6. Next-session kickoff (network now open)
+
+The environment's network policy was widened after this branch's sandbox
+booted, so a fresh session is required to inherit it. Paste this to start:
+
+> Work on branch `claude/whispering-pines`. Read docs/WHISPERING-PINES.md
+> first. The network policy is now open — verify with a curl to
+> whisperingpinesgolfclub.com. Then: (1) run
+> `node scripts/fetch-photos.mjs --crawl` and review the harvested club
+> photography; (2) confirm the true course location visually — fetch and
+> stitch Esri satellite tiles over the peninsula at 30.9165,-95.2475
+> (GNIS-anchored, see §2) and look at them; also query OSM Overpass for a
+> mapped golf-course polygon/holes near there and prefer that geometry if
+> present; align `scripts/layout-whispering-pines.mjs` anchors to the
+> visible fairways and regenerate; (3) install sharp, optimize the
+> approved photos into public/photos/ (plus a 1200×630 og-image), and
+> wire them into `config/whispering-pines.config.ts` src slots — aerials
+> stay as fallbacks; (4) `npm run build && npm run verify:routes`, fix
+> anything, commit and push to the same branch.
