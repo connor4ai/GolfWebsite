@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" preserveAspectRatio="xMidYMid slice" role="img">
+<defs>
+  <linearGradient id="sky-gallery10" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2c3e46"/><stop offset="33.33333333333333%" stop-color="#54565b"/><stop offset="66.66666666666666%" stop-color="#9a7d52"/><stop offset="100%" stop-color="#c98f4e"/></linearGradient>
+  <radialGradient id="glow-gallery10" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#f0c878" stop-opacity="0.95"/>
+    <stop offset="45%" stop-color="#c98f4e" stop-opacity="0.4"/>
+    <stop offset="100%" stop-color="#c98f4e" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="vig-gallery10" cx="50%" cy="42%" r="75%">
+    <stop offset="62%" stop-color="#000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#000" stop-opacity="0.38"/>
+  </radialGradient>
+  <linearGradient id="mistg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#c98f4e" stop-opacity="0"/>
+    <stop offset="55%" stop-color="#c98f4e" stop-opacity="0.8"/>
+    <stop offset="100%" stop-color="#c98f4e" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="fwy" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#557544"/>
+    <stop offset="100%" stop-color="#476439"/>
+  </linearGradient>
+  <linearGradient id="fieldg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#3c5234"/>
+    <stop offset="100%" stop-color="#2c3f27"/>
+  </linearGradient>
+  <linearGradient id="waterg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#33505e"/>
+    <stop offset="100%" stop-color="#16242c"/>
+  </linearGradient></defs>
+<rect width="1600" height="1200" fill="url(#sky-gallery10)"/>
+<circle cx="960" cy="408" r="64" fill="#f0c878" opacity="0.96"/>
+  <circle cx="960" cy="408" r="281.6" fill="url(#glow-gallery10)"/>
+<path d="M0 1200 L0 471 Q 44 479 67 483 Q 89 487 111 491 Q 133 494 156 497 Q 178 499 200 501 Q 222 502 244 503 Q 267 503 289 503 Q 311 503 333 502 Q 356 502 378 501 Q 400 500 422 500 Q 444 500 467 500 Q 489 501 511 502 Q 533 503 556 505 Q 578 507 600 510 Q 622 513 644 516 Q 667 519 689 523 Q 711 526 733 529 Q 756 533 778 536 Q 800 539 822 541 Q 844 544 867 546 Q 889 548 911 551 Q 933 553 956 555 Q 978 557 1000 560 Q 1022 562 1044 565 Q 1067 568 1089 572 Q 1111 575 1133 580 Q 1156 584 1178 588 Q 1200 592 1222 596 Q 1244 600 1267 603 Q 1289 607 1311 609 Q 1333 610 1356 611 Q 1378 611 1400 609 Q 1422 607 1444 603 Q 1467 599 1489 593 Q 1511 586 1533 578 Q 1556 570 1578 561 L1600 1200 Z" fill="#49543f" opacity="0.92"/><path d="M0 1200 L0 483 Q 44 481 67 481 Q 89 482 111 483 Q 133 485 156 488 Q 178 491 200 494 Q 222 497 244 500 Q 267 502 289 504 Q 311 506 333 506 Q 356 506 378 505 Q 400 504 422 503 Q 444 501 467 499 Q 489 498 511 496 Q 533 495 556 495 Q 578 494 600 494 Q 622 495 644 495 Q 667 495 689 495 Q 711 495 733 493 Q 756 492 778 488 Q 800 485 822 479 Q 844 474 867 467 Q 889 460 911 452 Q 933 445 956 438 Q 978 430 1000 424 Q 1022 418 1044 414 Q 1067 410 1089 408 Q 1111 406 1133 405 Q 1156 405 1178 405 Q 1200 406 1222 407 Q 1244 409 1267 410 Q 1289 411 1311 412 Q 1333 414 1356 415 Q 1378 416 1400 418 Q 1422 420 1444 423 Q 1467 426 1489 431 Q 1511 436 1533 443 Q 1556 449 1578 457 L1600 1200 Z" fill="#5d6657" opacity="0.65"/><path d="M0 1200 L0 663 Q 44 659 67 658 Q 89 657 111 657 Q 133 657 156 659 Q 178 661 200 664 Q 222 667 244 671 Q 267 675 289 679 Q 311 683 333 686 Q 356 690 378 691 Q 400 693 422 693 Q 444 692 467 689 Q 489 686 511 681 Q 533 675 556 667 Q 578 660 600 650 Q 622 640 644 629 Q 667 618 689 607 Q 711 596 733 585 Q 756 574 778 565 Q 800 555 822 548 Q 844 540 867 535 Q 889 529 911 526 Q 933 522 956 521 Q 978 519 1000 519 Q 1022 520 1044 521 Q 1067 523 1089 525 Q 1111 527 1133 530 Q 1156 534 1178 537 Q 1200 541 1222 545 Q 1244 549 1267 554 Q 1289 559 1311 565 Q 1333 571 1356 578 Q 1378 584 1400 592 Q 1422 600 1444 608 Q 1467 616 1489 625 Q 1511 634 1533 643 Q 1556 652 1578 660 L1600 1200 Z" fill="#36412f" opacity="1"/><path d="M0 1200 L0 630 Q 44 639 67 645 Q 89 650 111 654 Q 133 659 156 664 Q 178 668 200 672 Q 222 676 244 682 Q 267 687 289 694 Q 311 701 333 710 Q 356 720 378 731 Q 400 743 422 757 Q 444 771 467 785 Q 489 799 511 813 Q 533 826 556 837 Q 578 847 600 855 Q 622 862 644 865 Q 667 868 689 868 Q 711 867 733 864 Q 756 861 778 857 Q 800 852 822 848 Q 844 844 867 840 Q 889 837 911 834 Q 933 832 956 830 Q 978 828 1000 826 Q 1022 824 1044 821 Q 1067 817 1089 812 Q 1111 807 1133 799 Q 1156 791 1178 782 Q 1200 772 1222 762 Q 1244 752 1267 742 Q 1289 732 1311 724 Q 1333 716 1356 711 Q 1378 706 1400 704 Q 1422 702 1444 703 Q 1467 703 1489 706 Q 1511 708 1533 711 Q 1556 714 1578 716 L1600 1200 Z" fill="#273123" opacity="1"/><path d="M0 1200 L0 924 Q 44 947 67 954 Q 89 961 111 964 Q 133 967 156 965 Q 178 964 200 960 Q 222 955 244 949 Q 267 944 289 937 Q 311 931 333 926 Q 356 921 378 918 Q 400 915 422 914 Q 444 913 467 913 Q 489 913 511 914 Q 533 915 556 916 Q 578 916 600 916 Q 622 915 644 912 Q 667 910 689 905 Q 711 901 733 895 Q 756 889 778 883 Q 800 876 822 870 Q 844 864 867 860 Q 889 855 911 852 Q 933 850 956 849 Q 978 848 1000 849 Q 1022 850 1044 851 Q 1067 852 1089 852 Q 1111 852 1133 850 Q 1156 848 1178 842 Q 1200 837 1222 829 Q 1244 821 1267 809 Q 1289 798 1311 784 Q 1333 771 1356 757 Q 1378 743 1400 731 Q 1422 718 1444 708 Q 1467 698 1489 692 Q 1511 685 1533 683 Q 1556 681 1578 683 L1600 1200 Z" fill="#1a221a" opacity="1"/>
+<rect x="0" y="638" width="1600" height="90" fill="url(#mistg)" opacity="0.2"/>
+<rect x="0" y="813.4201368428767" width="1600" height="386.5798631571233" fill="url(#fieldg)"/><ellipse cx="96" cy="872" rx="46" ry="57" fill="#141b13"/><ellipse cx="73" cy="892" rx="34" ry="42" fill="#141b13"/><ellipse cx="114" cy="895" rx="58" ry="72" fill="#141b13"/><ellipse cx="1419" cy="856" rx="66" ry="83" fill="#141b13"/><ellipse cx="1387" cy="857" rx="50" ry="62" fill="#141b13"/><ellipse cx="1457" cy="843" rx="43" ry="54" fill="#141b13"/><ellipse cx="1516" cy="847" rx="59" ry="74" fill="#141b13"/><ellipse cx="1405" cy="844" rx="34" ry="42" fill="#141b13"/><ellipse cx="1293" cy="818" rx="20" ry="25" fill="#1a2418"/><ellipse cx="1272" cy="815" rx="40" ry="50" fill="#1a2418"/><ellipse cx="1195" cy="822" rx="24" ry="30" fill="#1a2418"/><ellipse cx="1274" cy="828" rx="31" ry="39" fill="#1a2418"/><ellipse cx="1214" cy="824" rx="34" ry="43" fill="#1a2418"/>
+<rect x="0" y="787.4201368428767" width="1600" height="70" fill="url(#mistg)" opacity="0.12"/>
+<g transform="translate(800 839.4201368428767) scale(1.5)"><rect x="-95" y="-70" width="190" height="70" fill="#171d16"/>
+      <path d="M-112 -70 L0 -136 L112 -70 Z" fill="#0e120d"/>
+      <rect x="46" y="-128" width="18" height="42" fill="#0e120d"/><rect x="-62" y="-52" width="28" height="36" fill="#e8b96a" opacity="0.92"/><rect x="20" y="-52" width="28" height="36" fill="#c79a55" opacity="0.92"/></g>
+<path d="M 352 753.4201368428767 Q 800 833.4201368428767 1248 753.4201368428767" stroke="#6b5a35" stroke-width="2" fill="none"/><circle cx="427" cy="773" r="5" fill="#f3cd82"/>
+            <circle cx="427" cy="773" r="11" fill="#f3cd82" opacity="0.22"/><circle cx="501" cy="783" r="5" fill="#f3cd82"/>
+            <circle cx="501" cy="783" r="11" fill="#f3cd82" opacity="0.22"/><circle cx="576" cy="790" r="5" fill="#f3cd82"/>
+            <circle cx="576" cy="790" r="11" fill="#f3cd82" opacity="0.22"/><circle cx="651" cy="796" r="5" fill="#f3cd82"/>
+            <circle cx="651" cy="796" r="11" fill="#f3cd82" opacity="0.22"/><circle cx="725" cy="799" r="5" fill="#f3cd82"/>
+            <circle cx="725" cy="799" r="11" fill="#f3cd82" opacity="0.22"/><circle cx="800" cy="800" r="5" fill="#f3cd82"/>
+            <circle cx="800" cy="800" r="11" fill="#f3cd82" opacity="0.22"/><circle cx="875" cy="799" r="5" fill="#f3cd82"/>
+            <circle cx="875" cy="799" r="11" fill="#f3cd82" opacity="0.22"/><circle cx="949" cy="796" r="5" fill="#f3cd82"/>
+            <circle cx="949" cy="796" r="11" fill="#f3cd82" opacity="0.22"/><circle cx="1024" cy="790" r="5" fill="#f3cd82"/>
+            <circle cx="1024" cy="790" r="11" fill="#f3cd82" opacity="0.22"/><circle cx="1099" cy="783" r="5" fill="#f3cd82"/>
+            <circle cx="1099" cy="783" r="11" fill="#f3cd82" opacity="0.22"/><circle cx="1173" cy="773" r="5" fill="#f3cd82"/>
+            <circle cx="1173" cy="773" r="11" fill="#f3cd82" opacity="0.22"/>
+<rect width="1600" height="1200" fill="url(#vig-gallery10)"/>
+</svg>
