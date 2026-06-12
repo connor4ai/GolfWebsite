@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { SmartImage } from "@/components/media/SmartImage";
 import { site } from "@/lib/site";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -70,12 +70,9 @@ export default function AboutPage() {
                 <Reveal key={person.name} delay={i * 0.06}>
                   <article className="flex h-full flex-col border hairline bg-night">
                     <div className="relative aspect-square overflow-hidden">
-                      <Image
-                        src={person.image.src}
-                        alt={person.image.alt}
-                        fill
+                      <SmartImage
+                        asset={person.image}
                         sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                        className="object-cover"
                       />
                     </div>
                     <div className="flex flex-1 flex-col p-6">

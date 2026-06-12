@@ -35,7 +35,7 @@
 <rect x="0" y="692.5082800090313" width="1600" height="507.4917199909687" fill="url(#fieldg)"/><path d="M 574.7152063548565 1240 C 697.3989896867424 1104, 371.20235718786716 931.727153826505, 549.0299416482449 817.727153826505
              L 661.0299416482449 817.727153826505 C 671.2023571878672 931.727153826505, 1187.3989896867424 1128, 994.7152063548565 1240 Z" fill="url(#fwy)"/><path d="M 660.7152063548565 1240 C 787.3989896867424 1116, 445.20235718786716 951.727153826505, 583.0299416482449 823.727153826505" stroke="#ffffff" stroke-opacity="0.05" stroke-width="20" fill="none"/><path d="M 746.7152063548565 1240 C 877.3989896867424 1116, 509.20235718786716 951.727153826505, 601.0299416482449 823.727153826505" stroke="#ffffff" stroke-opacity="0.05" stroke-width="20" fill="none"/><path d="M 832.7152063548565 1240 C 967.3989896867424 1116, 573.2023571878672 951.727153826505, 619.0299416482449 823.727153826505" stroke="#ffffff" stroke-opacity="0.05" stroke-width="20" fill="none"/><ellipse cx="605.0299416482449" cy="809.727153826505" rx="92" ry="26" fill="#5d7c4b"/>
   <ellipse cx="605.0299416482449" cy="807.727153826505" rx="64" ry="17" fill="#6f9c58" opacity="0.9"/><ellipse cx="537" cy="831" rx="40" ry="13" fill="#cdb87f" opacity="0.88"/><ellipse cx="615" cy="833" rx="34" ry="12" fill="#cdb87f" opacity="0.88"/><g>
-    <line x1="605.0299416482449" y1="807.727153826505" x2="605.0299416482449" y2="719.727153826505" stroke="#f2ede3" stroke-width="3"/>
+    <line x1="605.0299416482449" y1="807.727153826505" x2="605.0299416482449" y2="719.727153826505" stroke="#f3efe6" stroke-width="3"/>
     <path d="M 605.0299416482449 719.727153826505 l 46 12 l -46 12 Z" fill="#c2a35d"/>
   </g><ellipse cx="134" cy="762" rx="30" ry="38" fill="#141b13"/><ellipse cx="63" cy="766" rx="62" ry="77" fill="#141b13"/><ellipse cx="54" cy="749" rx="45" ry="57" fill="#141b13"/><ellipse cx="155" cy="774" rx="39" ry="49" fill="#141b13"/><ellipse cx="1391" cy="718" rx="72" ry="90" fill="#141b13"/><ellipse cx="1576" cy="728" rx="41" ry="51" fill="#141b13"/><ellipse cx="1525" cy="746" rx="47" ry="59" fill="#141b13"/><ellipse cx="1530" cy="719" rx="67" ry="84" fill="#141b13"/>
 <rect x="0" y="666.5082800090313" width="1600" height="70" fill="url(#mistg)" opacity="0.12"/>
@@ -43,7 +43,7 @@
 
 <rect width="1600" height="1200" fill="url(#vig-hole18)"/>
 
-  <text x="1510" y="290" text-anchor="end" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="360" fill="#f2ede3" opacity="0.16">18</text>
+  <text x="1510" y="290" text-anchor="end" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="360" fill="#f3efe6" opacity="0.16">18</text>
   <g font-family="Georgia, serif" text-anchor="end">
     <text x="1504" y="368" font-size="44" fill="#c2a35d" letter-spacing="10">PAR 4</text>
   </g></svg>

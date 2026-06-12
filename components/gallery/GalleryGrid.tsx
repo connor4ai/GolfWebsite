@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
+import { SmartImage } from "@/components/media/SmartImage";
 import { motion, AnimatePresence } from "framer-motion";
 import { site } from "@/lib/site";
 import { Lightbox } from "./Lightbox";
@@ -49,7 +49,7 @@ export function GalleryGrid() {
           {images.map((img, i) => (
             <motion.button
               layout
-              key={img.src + img.category}
+              key={img.alt + img.category}
               type="button"
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -61,12 +61,10 @@ export function GalleryGrid() {
               }`}
               aria-label={`View larger: ${img.alt}`}
             >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
+              <SmartImage
+                asset={img}
                 sizes="(min-width: 768px) 33vw, 50vw"
-                className="object-cover transition-transform duration-700 ease-luxe group-hover:scale-[1.05]"
+                imgClassName="object-cover transition-transform duration-700 ease-luxe group-hover:scale-[1.05]"
               />
               <span className="absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-night/90 to-transparent p-4 text-left opacity-0 transition-all duration-400 group-hover:translate-y-0 group-hover:opacity-100">
                 <span className="text-[0.5625rem] uppercase tracking-luxe text-brass">

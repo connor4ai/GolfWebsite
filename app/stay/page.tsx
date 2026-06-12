@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
+import { SmartImage } from "@/components/media/SmartImage";
 import { site, formatUSD } from "@/lib/site";
+// (SmartImage renders aerial fallbacks for photo slots)
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -22,8 +23,8 @@ export default function StayPage() {
       <section className="mx-auto max-w-editorial px-6 pb-10 pt-44 md:px-10">
         <SectionHeading
           eyebrow="Stay the night"
-          title="Rooms with a ridgeline"
-          lede="Fall asleep to wind in the trees and wake up thirty steps from the first tee."
+          title="Inside the gates"
+          lede="Fall asleep to wind in the pines and wake up a short walk from the first tee."
         />
       </section>
 
@@ -37,17 +38,18 @@ export default function StayPage() {
               }`}
             >
               <div className="relative aspect-[4/3] overflow-hidden border hairline">
-                <Image
-                  src={lodge.image.src}
-                  alt={lodge.image.alt}
-                  fill
+                <SmartImage
+                  asset={lodge.image}
                   sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-700 ease-luxe hover:scale-[1.04]"
+                  imgClassName="object-cover transition-transform duration-700 ease-luxe hover:scale-[1.04]"
                 />
               </div>
               <div className="max-w-xl">
                 <p className="eyebrow">
-                  Sleeps {lodge.sleeps} · From {formatUSD(lodge.priceFrom)} / night
+                  Sleeps {lodge.sleeps} ·{" "}
+                  {lodge.priceFrom > 0
+                    ? `From ${formatUSD(lodge.priceFrom)} / night`
+                    : "Rates by arrangement"}
                 </p>
                 <h2 className="display-2 mt-4">{lodge.name}</h2>
                 <p className="mt-5 font-body text-base leading-loose text-mist">
@@ -67,9 +69,11 @@ export default function StayPage() {
                   <a href={site.booking.phoneHref} className="btn-primary">
                     Reserve · {site.booking.phone}
                   </a>
-                  <a href={`mailto:${site.booking.email}`} className="btn-ghost">
-                    Email reservations
-                  </a>
+                  {site.booking.email && (
+                    <a href={`mailto:${site.booking.email}`} className="btn-ghost">
+                      Email reservations
+                    </a>
+                  )}
                 </div>
               </div>
             </article>
@@ -82,13 +86,7 @@ export default function StayPage() {
         <section id="spa" className="scroll-mt-24 border-y hairline bg-raised/30">
           <div className="mx-auto grid max-w-[100rem] items-center gap-12 px-6 py-24 md:grid-cols-2 md:px-10">
             <Reveal className="relative aspect-[4/3] overflow-hidden border hairline">
-              <Image
-                src={spa.image.src}
-                alt={spa.image.alt}
-                fill
-                sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover"
-              />
+              <SmartImage asset={spa.image} sizes="(min-width: 768px) 50vw, 100vw" />
             </Reveal>
             <Reveal delay={0.1}>
               <p className="eyebrow">Wellness</p>
@@ -126,12 +124,10 @@ export default function StayPage() {
               <Reveal key={a.id} delay={i * 0.06}>
                 <article className="group flex h-full flex-col border hairline bg-raised/40">
                   <div className="relative aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={a.image.src}
-                      alt={a.image.alt}
-                      fill
+                    <SmartImage
+                      asset={a.image}
                       sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover transition-transform duration-700 ease-luxe group-hover:scale-[1.05]"
+                      imgClassName="object-cover transition-transform duration-700 ease-luxe group-hover:scale-[1.05]"
                     />
                   </div>
                   <div className="flex flex-1 flex-col p-6">

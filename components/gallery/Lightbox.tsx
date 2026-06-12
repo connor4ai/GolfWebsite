@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
+import { SmartImage } from "@/components/media/SmartImage";
 import type { GalleryImage } from "@/config/types";
 import { useFocusTrap } from "@/components/ui/useFocusTrap";
 
@@ -79,13 +79,13 @@ export function Lightbox({
         onClick={(e) => e.stopPropagation()}
       >
         <motion.div
-          key={img.src}
+          key={img.alt}
           initial={{ opacity: 0, scale: 0.985 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="relative h-full w-full border hairline"
         >
-          <Image src={img.src} alt={img.alt} fill className="object-contain" sizes="100vw" />
+          <SmartImage asset={img} imgClassName="object-contain" sizes="100vw" />
         </motion.div>
 
         <button

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { SmartImage } from "@/components/media/SmartImage";
 import { motion, useReducedMotion } from "framer-motion";
 import type { MapPin } from "@/config/types";
 import { CATEGORY_LABEL } from "@/lib/site";
@@ -41,12 +41,9 @@ export function PinPanel({ pin, onClose }: { pin: MapPin; onClose: () => void })
       className="panel pointer-events-auto absolute bottom-0 right-0 top-auto z-20 flex max-h-[62dvh] w-full flex-col overflow-hidden md:bottom-6 md:right-6 md:top-24 md:max-h-none md:w-[26rem]"
     >
       <div className="relative aspect-[16/9] w-full flex-shrink-0 md:aspect-[16/10]">
-        <Image
-          src={pin.image.src}
-          alt={pin.image.alt}
-          fill
+        <SmartImage
+          asset={pin.image}
           sizes="(min-width: 768px) 26rem, 100vw"
-          className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-raised via-transparent to-transparent" />
         <button

@@ -1,5 +1,20 @@
 # DECISIONS — Autonomous Build Log
 
+> **Branch note (`claude/whispering-pines`):** this branch repopulates the
+> template for the real Whispering Pines Golf Club (Trinity, TX) and adds
+> the award-tier home experience, the live-aerial imagery system, and the
+> explore tour. Client-specific decisions, source log, derived-data
+> disclosures and the pre-launch checklist live in
+> **docs/WHISPERING-PINES.md**. Notable platform decisions made here:
+> live satellite/aerial imagery as the photographic medium for every
+> visual slot (the build environment's egress policy blocks downloading
+> any external photo, and hotlinking unverifiable URLs would risk broken
+> frames — real aerial rendering is verifiable by construction and the
+> club's photo library drops in 1:1 via config `src`); Lenis for inertial
+> scroll; a bounded snapshot queue so aerial crops cost ~2 WebGL contexts
+> total; private-club mode driven by `courseAccess` (nav label, CTA,
+> membership-led rates page, optional email).
+
 Every material decision made without consultation during the one-shot build,
 with reasoning. Items marked ⚠ are the ones a client-facing deploy should
 revisit first.

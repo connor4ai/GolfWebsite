@@ -161,6 +161,7 @@ export function Scorecard({ course }: { course: CourseInfo }) {
           </tbody>
         </table>
       </div>
+      {course.ratings.length > 0 && (
       <p className="mt-3 text-[0.6875rem] leading-relaxed text-mist">
         {course.ratings
           .map((r) => {
@@ -169,6 +170,7 @@ export function Scorecard({ course }: { course: CourseInfo }) {
           })
           .join("   ·   ")}
       </p>
+      )}
     </div>
   );
 }

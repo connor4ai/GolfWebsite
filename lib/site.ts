@@ -24,7 +24,10 @@ export function navItems(): NavItem[] {
   } else {
     for (const c of site.courses) items.push({ label: c.name, href: `/course/${c.slug}` });
   }
-  items.push({ label: "Rates", href: "/rates" });
+  items.push({
+    label: site.flags.courseAccess === "private" ? "Membership" : "Rates",
+    href: "/rates",
+  });
   if (site.flags.hasLodging) items.push({ label: "Stay", href: "/stay" });
   if (site.flags.hasDining) items.push({ label: "Dine", href: "/dine" });
   if (site.flags.hasWeddings) items.push({ label: "Events", href: "/events-weddings" });
@@ -80,6 +83,16 @@ export function themeVars(): Record<string, string> {
     "--c-text": channels(c.text),
     "--c-text-dim": channels(c.textDim),
     "--c-line": channels(c.line),
+  };
+}
+
+/** Primary CTA resolved from config: external tee sheet vs internal page. */
+export function bookingCta() {
+  const href = site.booking.teeTimeUrl;
+  return {
+    href,
+    label: site.booking.ctaLabel ?? "Book a Tee Time",
+    external: /^https?:\/\//.test(href),
   };
 }
 

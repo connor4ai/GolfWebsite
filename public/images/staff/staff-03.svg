@@ -8,7 +8,7 @@
   <rect width="480" height="480" fill="url(#pg2)"/>
   <circle cx="240" cy="240" r="150" fill="none" stroke="#c2a35d" stroke-width="2"/>
   <circle cx="240" cy="240" r="160" fill="none" stroke="#c2a35d" stroke-width="0.8" opacity="0.6"/>
-  <text x="240" y="272" text-anchor="middle" font-family="Georgia, serif" font-size="96" letter-spacing="6" fill="#f2ede3">PR</text>
+  <text x="240" y="272" text-anchor="middle" font-family="Georgia, serif" font-size="96" letter-spacing="6" fill="#f3efe6">PR</text>
   <path d="M150 332 q 90 44 180 0" fill="none" stroke="#c2a35d" stroke-width="2"/>
   <circle cx="168" cy="344" r="3" fill="#c2a35d"/><circle cx="204" cy="351.0710678118655" r="3" fill="#c2a35d"/><circle cx="240" cy="354" r="3" fill="#c2a35d"/><circle cx="276" cy="351.0710678118655" r="3" fill="#c2a35d"/><circle cx="312" cy="344" r="3" fill="#c2a35d"/>
 </svg>

@@ -5,14 +5,15 @@ import { site } from "@/lib/site";
 export default function NotFound() {
   return (
     <div className="relative flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden px-6 text-center">
+      <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_0%,rgb(var(--c-primary)/0.35),rgb(var(--c-bg))_70%)]" />
       <Image
-        src="/images/scenes/hero-home.svg"
+        src={site.identity.logo.crest}
         alt=""
-        fill
-        className="object-cover opacity-25"
+        width={420}
+        height={420}
+        className="absolute -bottom-24 -right-24 opacity-[0.06]"
         priority
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-night/60 via-night/80 to-night" />
       <div className="relative">
         <p className="eyebrow">Out of bounds</p>
         <h1 className="display-1 mt-6">Lost ball.</h1>

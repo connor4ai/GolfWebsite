@@ -91,6 +91,72 @@ body {
 }
 
 /* ------------------------------------------------------------------ */
+/* Cinematic texture + kinetic-type helpers                            */
+/* ------------------------------------------------------------------ */
+
+/* Fine animated photographic grain (pure CSS, no asset) */
+.film-grain {
+  opacity: 0.07;
+  background-image: repeating-radial-gradient(
+    circle at 17% 32%,
+    rgba(255, 255, 255, 0.9) 0px,
+    transparent 1px,
+    transparent 2px
+  ),
+  repeating-radial-gradient(
+    circle at 73% 64%,
+    rgba(255, 255, 255, 0.8) 0px,
+    transparent 1.2px,
+    transparent 2.6px
+  );
+  background-size: 9px 9px, 13px 13px;
+  mix-blend-mode: overlay;
+  animation: grain-shift 0.9s steps(3) infinite;
+}
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  33% { transform: translate(-2px, 1px); }
+  66% { transform: translate(1px, -2px); }
+  100% { transform: translate(0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .film-grain { animation: none; }
+}
+
+/* Masked line reveal for display type */
+.line-mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+/* Infinite marquee */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-x var(--marquee-duration, 40s) linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Oversized ghost numerals */
+.ghost-numeral {
+  -webkit-text-stroke: 1px rgb(var(--c-accent) / 0.35);
+  color: transparent;
+}
+
+/* ------------------------------------------------------------------ */
 /* MapLibre chrome, restyled to match the brand                        */
 /* ------------------------------------------------------------------ */
 
@@ -205,6 +271,27 @@ body {
 }
 .fairway-pin.pin-hidden .fairway-pin__ring {
   transform: scale(0.4) translateY(10px);
+}
+
+/* Numbered hole pins: quieter, smaller, editorial */
+.fairway-pin--hole .fairway-pin__ring {
+  width: 27px;
+  height: 27px;
+  border-width: 1px;
+  border-color: rgb(var(--c-accent) / 0.65);
+  background: rgb(var(--c-bg) / 0.78);
+}
+.fairway-pin--hole .fairway-pin__num {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 0.8125rem;
+  line-height: 1;
+  color: rgb(var(--c-text) / 0.92);
+}
+.fairway-pin--hole.pin-selected .fairway-pin__ring {
+  background: rgb(var(--c-accent));
+}
+.fairway-pin--hole.pin-selected .fairway-pin__num {
+  color: rgb(var(--c-bg));
 }
 
 /* Illustrated map pins */

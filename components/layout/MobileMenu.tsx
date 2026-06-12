@@ -4,8 +4,24 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { site, navItems } from "@/lib/site";
+import { site, navItems, bookingCta } from "@/lib/site";
 import { useFocusTrap } from "@/components/ui/useFocusTrap";
+
+function MenuCta() {
+  const cta = bookingCta();
+  if (cta.external) {
+    return (
+      <a href={cta.href} target="_blank" rel="noopener noreferrer" className="btn-primary">
+        {cta.label}
+      </a>
+    );
+  }
+  return (
+    <Link href={cta.href} className="btn-primary">
+      {cta.label}
+    </Link>
+  );
+}
 
 /** Full-screen menu (all viewports) with staggered reveal. */
 export function MobileMenu({ onClose }: { onClose: () => void }) {
@@ -101,18 +117,13 @@ export function MobileMenu({ onClose }: { onClose: () => void }) {
             <a href={site.booking.phoneHref} className="text-cream/85 transition-colors hover:text-brass">
               {site.booking.phone}
             </a>
-            <a href={`mailto:${site.booking.email}`} className="break-all text-cream/85 transition-colors hover:text-brass">
-              {site.booking.email}
-            </a>
+            {site.booking.email && (
+              <a href={`mailto:${site.booking.email}`} className="break-all text-cream/85 transition-colors hover:text-brass">
+                {site.booking.email}
+              </a>
+            )}
           </div>
-          <a
-            href={site.booking.teeTimeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary"
-          >
-            Book a Tee Time
-          </a>
+          <MenuCta />
         </motion.div>
       </div>
     </motion.div>
