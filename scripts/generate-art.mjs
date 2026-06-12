@@ -25,11 +25,11 @@ const out = (...p) => join(root, "public", ...p);
 const BRAND = {
   brass: "#c2a35d",
   brassBright: "#e9d9ac",
-  cream: "#f2ede3",
-  night: "#101511",
-  initials: "HR",
-  name: "HIGHMARK RIDGE GOLF CLUB",
-  est: "EST. 1929",
+  cream: "#f3efe6",
+  night: "#0e1310",
+  initials: "WP",
+  name: "WHISPERING PINES GOLF CLUB",
+  est: "EST. 2000",
 };
 
 const PALETTES = {

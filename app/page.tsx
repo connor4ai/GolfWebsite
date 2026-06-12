@@ -1,20 +1,24 @@
 import { Hero } from "@/components/home/Hero";
-import { IntroNarrative } from "@/components/home/IntroNarrative";
-import { ExploreTeaser } from "@/components/home/ExploreTeaser";
-import { FeaturedHoles } from "@/components/home/FeaturedHoles";
+import { NumbersStrip } from "@/components/home/NumbersStrip";
+import { Manifesto } from "@/components/home/Manifesto";
+import { CoursesShowcase } from "@/components/home/CoursesShowcase";
+import { CreekRun } from "@/components/home/CreekRun";
 import { AmenitiesGrid } from "@/components/home/AmenitiesGrid";
-import { Accolades } from "@/components/home/Accolades";
+import { ExploreTeaser } from "@/components/home/ExploreTeaser";
+import { AccoladeMarquee } from "@/components/home/AccoladeMarquee";
 import { GalleryPreview } from "@/components/home/GalleryPreview";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <IntroNarrative />
+      <AccoladeMarquee />
+      <Manifesto />
+      <NumbersStrip />
+      <CoursesShowcase />
+      <CreekRun />
       <ExploreTeaser />
-      <FeaturedHoles />
       <AmenitiesGrid />
-      <Accolades />
       <GalleryPreview />
     </>
   );

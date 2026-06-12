@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { site, navItems } from "@/lib/site";
+import { site, navItems, bookingCta } from "@/lib/site";
 
 export function Footer() {
   const pathname = usePathname();
@@ -13,6 +13,7 @@ export function Footer() {
   }
   const year = new Date().getFullYear();
   const demo = site.seo.siteUrl.includes(".example");
+  const cta = bookingCta();
 
   return (
     <footer className="no-print border-t hairline bg-raised/40">
@@ -61,9 +62,11 @@ export function Footer() {
             <a href={site.booking.phoneHref} className="text-cream/75 transition-colors hover:text-brass">
               {site.booking.phone}
             </a>
-            <a href={`mailto:${site.booking.email}`} className="break-all text-cream/75 transition-colors hover:text-brass">
-              {site.booking.email}
-            </a>
+            {site.booking.email && (
+              <a href={`mailto:${site.booking.email}`} className="break-all text-cream/75 transition-colors hover:text-brass">
+                {site.booking.email}
+              </a>
+            )}
           </div>
         </div>
 
@@ -72,14 +75,15 @@ export function Footer() {
           {site.booking.bookingNote && (
             <p className="font-body text-sm leading-relaxed text-mist">{site.booking.bookingNote}</p>
           )}
-          <a
-            href={site.booking.teeTimeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary mt-6"
-          >
-            Book a Tee Time
-          </a>
+          {cta.external ? (
+            <a href={cta.href} target="_blank" rel="noopener noreferrer" className="btn-primary mt-6">
+              {cta.label}
+            </a>
+          ) : (
+            <Link href={cta.href} className="btn-primary mt-6">
+              {cta.label}
+            </Link>
+          )}
         </div>
       </div>
 

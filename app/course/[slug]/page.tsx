@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
-import { site, getCourseBySlug } from "@/lib/site";
+import { SmartImage } from "@/components/media/SmartImage";
+import { site, getCourseBySlug, bookingCta } from "@/lib/site";
 import { Scorecard } from "@/components/course/Scorecard";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -31,18 +31,15 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
     (h) => h.number === course.signatureHoleNumber
   );
   const tips = course.ratings[0];
+  const cta = bookingCta();
 
   return (
     <>
       {/* Hero */}
       <section className="relative flex min-h-[78dvh] items-end overflow-hidden">
-        <Image
-          src={course.heroImage.src}
-          alt={course.heroImage.alt}
-          fill
-          priority
-          className="object-cover"
-        />
+        <div className="absolute inset-0">
+          <SmartImage asset={course.heroImage} priority sizes="100vw" />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-night/60 via-night/25 to-night" />
         <div className="relative mx-auto w-full max-w-[100rem] px-6 pb-20 pt-44 md:px-10">
           <Reveal>
@@ -51,9 +48,13 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
             <div className="mt-8 flex flex-wrap gap-x-10 gap-y-4">
               {[
                 ["Par", String(course.par)],
-                ["Yards", tips ? tips.yards.toLocaleString() : "—"],
-                ["Rating / Slope", tips ? `${tips.rating} / ${tips.slope}` : "—"],
-                ["Opened", String(course.yearBuilt)],
+                ["Holes", String(course.holes.length)],
+                ...(tips
+                  ? [
+                      ["Yards", tips.yards.toLocaleString()],
+                      ["Rating / Slope", `${tips.rating} / ${tips.slope}`],
+                    ]
+                  : [["Opened", String(course.yearBuilt)]]),
               ].map(([label, value]) => (
                 <div key={label}>
                   <p className="text-[0.625rem] uppercase tracking-luxe text-mist">{label}</p>
@@ -80,14 +81,15 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
               <Link href={`/course/${course.slug}/holes`} className="btn-primary">
                 Fly the course in 3D
               </Link>
-              <a
-                href={site.booking.teeTimeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-ghost"
-              >
-                Book a tee time
-              </a>
+              {cta.external ? (
+                <a href={cta.href} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                  {cta.label}
+                </a>
+              ) : (
+                <Link href={cta.href} className="btn-ghost">
+                  {cta.label}
+                </Link>
+              )}
             </div>
           </Reveal>
           <Reveal delay={0.12}>
@@ -106,12 +108,9 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
         <section className="border-y hairline bg-raised/30">
           <div className="mx-auto grid max-w-[100rem] items-center gap-10 px-6 py-20 md:grid-cols-2 md:px-10">
             <Reveal className="relative aspect-[4/3] overflow-hidden border hairline">
-              <Image
-                src={signature.heroImage.src}
-                alt={signature.heroImage.alt}
-                fill
+              <SmartImage
+                asset={signature.heroImage}
                 sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover"
               />
             </Reveal>
             <Reveal delay={0.1}>
@@ -142,7 +141,7 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
         <SectionHeading
           eyebrow="The numbers"
           title="Pick your fight"
-          lede="Four sets of tees, one honest mountain. Ratings are USGA; the wind is not."
+          lede={`${course.teeBoxes.length} sets of tees and not one easy way around. Play the markers that tell the truth about your game.`}
         />
         <Reveal className="mt-12">
           <Scorecard course={course} />
@@ -154,14 +153,12 @@ export default function CoursePage({ params }: { params: { slug: string } }) {
         <section className="mx-auto max-w-[100rem] px-6 pb-28 md:px-10">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
             {course.gallery.slice(0, 6).map((img, i) => (
-              <Reveal key={img.src} delay={i * 0.05}>
+              <Reveal key={img.alt} delay={i * 0.05}>
                 <div className="relative aspect-[4/3] overflow-hidden border hairline">
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    fill
+                  <SmartImage
+                    asset={img}
                     sizes="(min-width: 768px) 33vw, 50vw"
-                    className="object-cover transition-transform duration-700 ease-luxe hover:scale-[1.05]"
+                    imgClassName="object-cover transition-transform duration-700 ease-luxe hover:scale-[1.05]"
                   />
                 </div>
               </Reveal>

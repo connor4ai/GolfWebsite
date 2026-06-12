@@ -1,13 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useRM } from "@/components/ui/useRM";
 import { site } from "@/lib/site";
 import { AudioToggle } from "./AudioToggle";
+import { LiveAerial } from "@/components/media/LiveAerial";
 
 /** Cinematic landing veil over the explore map. */
 export function EntryOverlay({ onEnter }: { onEnter: () => void }) {
-  const reduced = useReducedMotion();
+  const reduced = useRM();
   const entry = site.propertyMap.entry;
 
   const rise = (delay: number) =>
@@ -29,14 +31,17 @@ export function EntryOverlay({ onEnter }: { onEnter: () => void }) {
           : { opacity: 0, scale: 1.06, transition: { duration: 1, ease: [0.4, 0, 0.2, 1] } }
       }
     >
-      <Image
-        src="/images/scenes/hero-explore.svg"
-        alt=""
-        fill
-        priority
-        className={`object-cover ${reduced ? "" : "animate-slow-drift"}`}
+      <LiveAerial
+        view={{
+          center: site.propertyMap.center,
+          zoom: site.propertyMap.zoom - 1.4,
+          bearing: site.propertyMap.bearing,
+          pitch: 38,
+        }}
+        driftDegPerSec={0.5}
+        grade={false}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-night/50 via-night/35 to-night/85" />
+      <div className="absolute inset-0 bg-gradient-to-b from-night/55 via-night/40 to-night/85" />
 
       <div className="relative flex max-w-3xl flex-col items-center px-6 text-center">
         <motion.div {...rise(0.1)}>

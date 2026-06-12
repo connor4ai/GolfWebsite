@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { SmartImage } from "@/components/media/SmartImage";
 import { defaultCourse } from "@/lib/site";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -113,12 +113,10 @@ export function FeaturedHoles() {
               className="group relative w-[85vw] max-w-xl flex-shrink-0 snap-center overflow-hidden border hairline bg-night md:w-[44vw]"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src={hole.heroImage.src}
-                  alt={hole.heroImage.alt}
-                  fill
+                <SmartImage
+                  asset={hole.heroImage}
                   sizes="(min-width: 768px) 44vw, 85vw"
-                  className="object-cover transition-transform duration-700 ease-luxe group-hover:scale-[1.04]"
+                  imgClassName="object-cover transition-transform duration-700 ease-luxe group-hover:scale-[1.04]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-night via-night/20 to-transparent" />
                 <div className="absolute left-6 top-6 flex items-baseline gap-2">

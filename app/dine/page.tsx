@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
+import { SmartImage } from "@/components/media/SmartImage";
 import { site } from "@/lib/site";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -34,12 +34,10 @@ export default function DinePage() {
               }`}
             >
               <div className="relative aspect-[4/3] overflow-hidden border hairline">
-                <Image
-                  src={venue.image.src}
-                  alt={venue.image.alt}
-                  fill
+                <SmartImage
+                  asset={venue.image}
                   sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-700 ease-luxe hover:scale-[1.04]"
+                  imgClassName="object-cover transition-transform duration-700 ease-luxe hover:scale-[1.04]"
                 />
               </div>
               <div className="max-w-xl">
@@ -68,9 +66,11 @@ export default function DinePage() {
                   <a href={site.booking.phoneHref} className="btn-primary">
                     Reserve a table
                   </a>
-                  <a href={`mailto:${site.booking.email}`} className="btn-ghost">
-                    Private dining inquiry
-                  </a>
+                  {site.booking.email && (
+                    <a href={`mailto:${site.booking.email}`} className="btn-ghost">
+                      Private dining inquiry
+                    </a>
+                  )}
                 </div>
               </div>
             </article>

@@ -7,7 +7,7 @@ import { ContactMap } from "@/components/contact/ContactMap";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Reach ${site.identity.courseName}: ${site.booking.phone} · ${site.booking.email}`,
+  description: `Reach ${site.identity.courseName}: ${site.booking.phone}${site.booking.email ? ` · ${site.booking.email}` : ""}`,
 };
 
 export default function ContactPage({
@@ -42,15 +42,24 @@ export default function ContactPage({
                     {booking.phone}
                   </a>
                 </div>
-                <div>
-                  <p className="eyebrow">Write</p>
-                  <a
-                    href={`mailto:${booking.email}`}
-                    className="mt-2 block break-all font-display text-xl text-cream transition-colors hover:text-brass"
-                  >
-                    {booking.email}
-                  </a>
-                </div>
+                {booking.email ? (
+                  <div>
+                    <p className="eyebrow">Write</p>
+                    <a
+                      href={`mailto:${booking.email}`}
+                      className="mt-2 block break-all font-display text-xl text-cream transition-colors hover:text-brass"
+                    >
+                      {booking.email}
+                    </a>
+                  </div>
+                ) : (
+                  <div>
+                    <p className="eyebrow">Office hours</p>
+                    <p className="mt-2 font-display text-xl text-cream">
+                      The club office returns every call
+                    </p>
+                  </div>
+                )}
                 <div className="sm:col-span-2">
                   <p className="eyebrow">Visit</p>
                   <address className="mt-2 font-body text-sm not-italic leading-relaxed text-mist">

@@ -1,5 +1,5 @@
 import type { SiteConfig } from "./types";
-import highmarkRidge from "./highmark-ridge.config";
+import whisperingPines from "./whispering-pines.config";
 
 /**
  * ACTIVE SITE CONFIGURATION
@@ -11,6 +11,6 @@ import highmarkRidge from "./highmark-ridge.config";
  *   import dailyFee from "./examples/daily-fee.config";
  *   const active: SiteConfig = dailyFee;
  */
-const active: SiteConfig = highmarkRidge;
+const active: SiteConfig = whisperingPines;
 
 export default active;

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+import { SmartImage } from "@/components/media/SmartImage";
 import { site } from "@/lib/site";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -19,13 +19,9 @@ export default function EventsWeddingsPage() {
     <>
       {/* Hero */}
       <section className="relative flex min-h-[78dvh] items-end overflow-hidden">
-        <Image
-          src={w.image.src}
-          alt={w.image.alt}
-          fill
-          priority
-          className="object-cover"
-        />
+        <div className="absolute inset-0">
+          <SmartImage asset={w.image} priority sizes="100vw" />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-night/55 via-night/25 to-night" />
         <div className="relative mx-auto w-full max-w-[100rem] px-6 pb-20 pt-44 md:px-10">
           <Reveal>
@@ -53,12 +49,10 @@ export default function EventsWeddingsPage() {
               <Reveal key={venue.name} delay={i * 0.08}>
                 <article className="group flex h-full flex-col border hairline bg-night">
                   <div className="relative aspect-[4/5] overflow-hidden">
-                    <Image
-                      src={venue.image.src}
-                      alt={venue.image.alt}
-                      fill
+                    <SmartImage
+                      asset={venue.image}
                       sizes="(min-width: 768px) 33vw, 100vw"
-                      className="object-cover transition-transform duration-700 ease-luxe group-hover:scale-[1.05]"
+                      imgClassName="object-cover transition-transform duration-700 ease-luxe group-hover:scale-[1.05]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-night/90 via-transparent to-transparent" />
                     <p className="absolute bottom-5 left-6 text-[0.625rem] uppercase tracking-luxe text-brass">

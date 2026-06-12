@@ -12,12 +12,22 @@ import { join } from "node:path";
 
 const PORT = process.env.PORT || 3105;
 const BASE = `http://127.0.0.1:${PORT}`;
-const resort = !process.argv.includes("--resort=0");
+const profileArg = process.argv.find((a) => a.startsWith("--profile="));
+const profile = profileArg ? profileArg.split("=")[1] : "wp";
+const resort = profile === "resort";
 
 const CHECKS = [
-  { path: "/", expect: 200, contains: ["Explore the Property", "Book a Tee Time"] },
+  {
+    path: "/",
+    expect: 200,
+    contains: ["Explore the Property", profile === "wp" ? "Inquire" : "Book a Tee Time"],
+  },
   { path: "/explore", expect: 200, contains: ["Explore", "Ambient sound"] },
-  { path: "/rates", expect: 200, contains: ["Twilight"] },
+  {
+    path: "/rates",
+    expect: 200,
+    contains: [profile === "wp" ? "Membership" : "Twilight"],
+  },
   { path: "/about", expect: 200, contains: ["Recognition"] },
   { path: "/gallery", expect: 200, contains: ["gallery"] },
   { path: "/contact", expect: 200, contains: ["Send message", "tel:"] },
@@ -29,7 +39,21 @@ const CHECKS = [
   { path: "/this-route-does-not-exist", expect: 404, contains: ["Lost ball"] },
 ];
 
-if (resort) {
+if (profile === "wp") {
+  CHECKS.push(
+    { path: "/", expect: 200, contains: ["Whispering Pines"] },
+    { path: "/course/championship", expect: 200, contains: ["Scorecard", "Signature hole", "Chet Williams"] },
+    { path: "/course/championship/holes", expect: 200, contains: ["Replay"] },
+    { path: "/course/championship/holes?hole=15", expect: 200, contains: ["Gator Cove"] },
+    { path: "/course/the-needler", expect: 200, contains: ["Scorecard", "Pine Valley"] },
+    { path: "/course/the-needler/holes", expect: 200, contains: ["Replay"] },
+    { path: "/stay", expect: 200, contains: ["Lonesome Dove", "Director"] },
+    { path: "/rates", expect: 200, contains: ["Membership", "Spirit"] },
+    { path: "/about", expect: 200, contains: ["Caney", "Spirit International"] },
+    { path: "/dine", expect: 404 },
+    { path: "/events-weddings", expect: 404 }
+  );
+} else if (resort) {
   CHECKS.push(
     { path: "/course/the-ridge", expect: 200, contains: ["Scorecard", "Signature hole"] },
     { path: "/course/the-ridge/holes", expect: 200, contains: ["First Light", "Replay"] },
@@ -101,5 +125,5 @@ if (failures) {
   console.error(`\n${failures} route check(s) FAILED`);
   process.exit(1);
 }
-console.log(`\nall ${CHECKS.length} route checks passed (${resort ? "resort" : "daily-fee"} config)`);
+console.log(`\nall ${CHECKS.length} route checks passed (${profile} config)`);
 process.exit(0);

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useRM } from "@/components/ui/useRM";
 
 /** Scroll-triggered reveal. Children fade-rise once, ~30% in view. */
 export function Reveal({
@@ -14,7 +15,7 @@ export function Reveal({
   className?: string;
   y?: number;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useRM();
   if (reduced) return <div className={className}>{children}</div>;
   return (
     <motion.div

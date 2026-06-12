@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
-import { site, navItems } from "@/lib/site";
+import { site, navItems, bookingCta } from "@/lib/site";
 import { MobileMenu } from "./MobileMenu";
 
 const PRIMARY_LINK_COUNT = 5;
@@ -29,6 +29,7 @@ export function Nav() {
   const solid = scrolled && !immersive;
   const items = navItems();
   const primary = items.slice(0, PRIMARY_LINK_COUNT);
+  const cta = bookingCta();
 
   return (
     <>
@@ -83,14 +84,20 @@ export function Nav() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <a
-              href={site.booking.teeTimeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary hidden !px-5 !py-2.5 md:inline-flex"
-            >
-              Book a Tee Time
-            </a>
+            {cta.external ? (
+              <a
+                href={cta.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary hidden !px-5 !py-2.5 md:inline-flex"
+              >
+                {cta.label}
+              </a>
+            ) : (
+              <Link href={cta.href} className="btn-primary hidden !px-5 !py-2.5 md:inline-flex">
+                {cta.label}
+              </Link>
+            )}
             <button
               type="button"
               onClick={() => setMenuOpen(true)}

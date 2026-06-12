@@ -5,6 +5,8 @@ import { buildJsonLd } from "@/lib/jsonld";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { Preloader } from "@/components/layout/Preloader";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -49,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           // Schema.org structured data assembled from the site config.
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
         />
         <a
           href="#main"
@@ -57,6 +59,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
+        <Preloader />
+        <SmoothScroll />
         <AnnouncementBar />
         <Nav />
         <main id="main">{children}</main>

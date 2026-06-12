@@ -1,6 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
+import { SmartImage } from "@/components/media/SmartImage";
 import { site } from "@/lib/site";
+import type { ImageAsset } from "@/config/types";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -8,7 +9,7 @@ interface Card {
   title: string;
   copy: string;
   href: string;
-  image: { src: string; alt: string };
+  image: ImageAsset;
 }
 
 /** Resort amenities, assembled purely from feature flags. */
@@ -69,12 +70,10 @@ export function AmenitiesGrid() {
               href={card.href}
               className="group relative block aspect-[5/6] overflow-hidden border hairline"
             >
-              <Image
-                src={card.image.src}
-                alt={card.image.alt}
-                fill
+              <SmartImage
+                asset={card.image}
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                className="object-cover transition-transform duration-700 ease-luxe group-hover:scale-[1.05]"
+                imgClassName="object-cover transition-transform duration-700 ease-luxe group-hover:scale-[1.05]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-night/95 via-night/30 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-7">

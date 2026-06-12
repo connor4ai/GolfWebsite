@@ -11,11 +11,29 @@ export interface LatLng {
   lng: number;
 }
 
+/** A framed view of real aerial/satellite imagery, rendered client-side. */
+export interface SatView {
+  center: LatLng;
+  zoom: number;
+  bearing?: number;
+  pitch?: number;
+}
+
 export interface ImageAsset {
-  /** Path under /public, e.g. "/images/holes/hole-01.svg" */
-  src: string;
+  /**
+   * Path under /public (e.g. "/images/holes/hole-01.svg") or an absolute
+   * https URL (client photography CDN). Optional when `sat` is provided —
+   * the slot then renders live aerial imagery of those coordinates.
+   */
+  src?: string;
   /** Descriptive alt text — used verbatim for accessibility. */
   alt: string;
+  /**
+   * Real-imagery fallback/primary: when `src` is absent or fails to load,
+   * the slot renders a satellite crop of these coordinates instead, so a
+   * photo slot is never broken and is always *real* imagery.
+   */
+  sat?: SatView;
 }
 
 /** Hex colors; converted to CSS variables at render time. */
@@ -49,6 +67,11 @@ export interface Identity {
     monogram: string;
   };
   brandColors: BrandColors;
+  /**
+   * Optional one-sentence credo rendered as the scroll-pinned manifesto on
+   * the home page (word-by-word reveal). Omit to skip the section.
+   */
+  manifesto?: string;
   /**
    * Documentation of the type pairing. The actual font files are wired in
    * app/fonts.ts; swap files there when a client licenses different type.
@@ -84,18 +107,27 @@ export interface LocationInfo {
   coords: LatLng;
   /** Elevation of the clubhouse, feet. */
   elevationFt?: number;
+  /** Property size, acres (home-page stat). */
+  acreage?: number;
   /** Editorial copy describing the setting / region. */
   regionNarrative: string;
   directions: { from: string; text: string }[];
 }
 
 export interface BookingInfo {
-  /** External tee-sheet URL. Opens in a new tab. */
+  /**
+   * Primary CTA destination: a tee sheet for public courses, or the
+   * membership/visit-inquiry page for private clubs. Absolute URLs open in
+   * a new tab; site-relative paths navigate internally.
+   */
   teeTimeUrl: string;
+  /** Label for the primary CTA, e.g. "Book a Tee Time" / "Inquire". */
+  ctaLabel?: string;
   phone: string;
   /** tel: href, digits only after scheme. */
   phoneHref: string;
-  email: string;
+  /** Omit if the club doesn't publish one — UI adapts. */
+  email?: string;
   bookingNote?: string;
 }
 
@@ -177,6 +209,14 @@ export interface PropertyMapConfig {
   bearing: number;
   pitch: number;
   pins: MapPin[];
+  /** Render numbered markers for every hole of the first course. */
+  holePins?: boolean;
+  /** Auto-flying property tour (explore HUD). */
+  tour?: {
+    label: string;
+    /** Seconds the camera rests on each stop. */
+    dwell?: number;
+  };
   /** Copy for the cinematic entry overlay on /explore. */
   entry: {
     headline: string;
@@ -263,7 +303,10 @@ export interface MembershipTier {
 
 export interface RatesConfig {
   intro: string;
+  /** Public green-fee tables. Empty for fully private clubs. */
   tables: RateTable[];
+  /** On-property lodging rates (display strings, e.g. "from $1,350 / night"). */
+  lodgingRates?: { name: string; rate: string; note?: string }[];
   notes: string[];
   membership?: {
     headline: string;

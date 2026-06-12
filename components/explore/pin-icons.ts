@@ -43,3 +43,31 @@ export function buildPinElement(
   });
   return el;
 }
+
+/** Compact numbered marker for individual holes. */
+export function buildHolePinElement(
+  pin: MapPin,
+  holeNumber: string,
+  onSelect: (pin: MapPin) => void
+): HTMLButtonElement {
+  const el = document.createElement("button");
+  el.type = "button";
+  el.className = "fairway-pin fairway-pin--hole";
+  el.dataset.category = pin.category;
+  el.setAttribute("aria-label", `${pin.title} — open details`);
+  const ring = document.createElement("span");
+  ring.className = "fairway-pin__ring";
+  const num = document.createElement("span");
+  num.className = "fairway-pin__num";
+  num.textContent = holeNumber;
+  ring.appendChild(num);
+  const label = document.createElement("span");
+  label.className = "fairway-pin__label";
+  label.textContent = pin.title;
+  el.append(ring, label);
+  el.addEventListener("click", (e) => {
+    e.stopPropagation();
+    onSelect(pin);
+  });
+  return el;
+}

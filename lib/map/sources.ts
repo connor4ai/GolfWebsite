@@ -31,7 +31,10 @@ export const IMAGERY_PROVIDERS: ImageryProvider[] = [
     ],
     attribution:
       "Imagery © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community",
-    maxzoom: 19,
+    // Native resolution over rural East Texas; deeper tiles are
+    // server-upsampled and read as blur. MapLibre overzooms client-side
+    // past this, which looks identical but saves the wasted fetches.
+    maxzoom: 17,
   },
   {
     id: "usgs",
