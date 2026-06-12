@@ -1,21 +1,26 @@
 /**
  * Whispering Pines GC (Trinity, TX) — routing generator.
  *
- * Geography derived from open DEM water-shape analysis (see
- * scripts/locate-course.mjs): the club occupies the upland peninsula at the
- * headwaters of Lake Livingston — Trinity River arm to the west, Caney
- * Creek arm to the east/south. Closing six holes (13–18) run along the
- * Caney Creek bottoms; the signature 178yd 15th plays across "Gator Cove."
- * Camp Olympia sits at the peninsula's southern tip.
+ * Site anchored to federal GNIS data (USGS DomesticNames, pulled from the
+ * prd-tnm S3 bucket): the property is the peninsula between Caney Creek
+ * (mouth 30.9205,-95.2699 — feature 1353735) and White Rock Creek (mouth
+ * 30.9055,-95.2658), on the east bank of the Trinity River channel at the
+ * headwaters of Lake Livingston. Cross-checked against the DEM water mask
+ * (scripts/locate-course.mjs over 30.935–30.885 / -95.295–-95.225).
  *
- * Coordinates are derived, not surveyed — see docs/DECISIONS.md. The
- * routing respects published facts: par 72, 7,468yd Spirit tees, creek-side
- * finish, lakes in play mid-front-nine.
+ * Front nine loops the eastern upland; the closing run rides lower Caney
+ * Creek — 13 to the headwaters bluff, 14 up the bank, the 178yd 15th
+ * across the Gator Cove pocket where the creek meets the river, 16–18
+ * home. Hole positions remain plan-derived, not GPS-surveyed — see
+ * docs/WHISPERING-PINES.md §2.
  *
  * Run: node scripts/layout-whispering-pines.mjs > scripts/data/wp-layout.json
  */
 
-const CLUBHOUSE = { lat: 30.8638, lng: -95.199 };
+// GNIS-anchored: the peninsula between Caney Creek (mouth 30.9205,-95.2699,
+// USGS feature 1353735) and White Rock Creek (mouth 30.9055,-95.2658),
+// east bank of the Trinity River channel at the Lake Livingston headwaters.
+const CLUBHOUSE = { lat: 30.9165, lng: -95.2475 };
 const YD = 0.9144;
 const R = 6371000;
 const toRad = (d) => (d * Math.PI) / 180;
@@ -59,26 +64,26 @@ function bearingDeg(a, b) {
  * segs: [{b: bearing°, d: yards}] — joints become dogleg midpoints.
  */
 const HOLES = [
-  // ---- front nine: northern upland loop -------------------------------
-  { n: 1, par: 4, segs: [{ b: 18, d: 450 }], walkB: 60, walk: 38 },
-  { n: 2, par: 5, segs: [{ b: 332, d: 315 }, { b: 305, d: 250 }], walkB: 0, walk: 40 },
-  { n: 3, par: 4, segs: [{ b: 47, d: 430 }], walkB: 90, walk: 34 },
-  { n: 4, par: 3, segs: [{ b: 116, d: 200 }], walkB: 150, walk: 30 }, // across the north lake
-  { n: 5, par: 4, segs: [{ b: 73, d: 470 }], walkB: 110, walk: 36 },
-  { n: 6, par: 4, segs: [{ b: 168, d: 425 }], walkB: 205, walk: 34 },
-  { n: 7, par: 3, segs: [{ b: 243, d: 230 }], walkB: 270, walk: 30 },
-  { n: 8, par: 5, segs: [{ b: 178, d: 320 }, { b: 160, d: 275 }], walkB: 285, walk: 40 },
-  { n: 9, par: 4, homeRun: { len: 435, minStop: 110 }, walkB: 150, walk: 42 }, // home to the east porch
-  // ---- back nine: south, then the serpentine Caney Creek run ----------
-  { n: 10, par: 4, segs: [{ b: 188, d: 430 }], walkB: 150, walk: 36 },
-  { n: 11, par: 5, segs: [{ b: 165, d: 320 }, { b: 145, d: 225 }], walkB: 70, walk: 34 },
-  { n: 12, par: 3, segs: [{ b: 85, d: 185 }], walkB: 60, walk: 32 }, // creek-bluff one-shotter
-  { n: 13, par: 5, segs: [{ b: 150, d: 300 }, { b: 175, d: 230 }], walkB: 80, walk: 34 }, // down the creek
-  { n: 14, par: 4, segs: [{ b: 337, d: 455 }], walkB: 70, walk: 30 }, // back up, creek right
-  { n: 15, par: 3, segs: [{ b: 80, d: 178 }], walkB: 350, walk: 34 }, // Gator Cove carry
-  { n: 16, par: 4, segs: [{ b: 285, d: 440 }], walkB: 30, walk: 34 }, // turning for home
-  { n: 17, par: 4, segs: [{ b: 310, d: 445 }], walkB: 250, walk: 36 },
-  { n: 18, par: 4, homeRun: { len: 520, minStop: 90 } }, // up to the clubhouse lawn
+  // ---- front nine: eastern upland loop ---------------------------------
+  { n: 1, par: 4, segs: [{ b: 150, d: 450 }], walkB: 95, walk: 38 },
+  { n: 2, par: 5, segs: [{ b: 85, d: 315 }, { b: 60, d: 250 }], walkB: 20, walk: 40 },
+  { n: 3, par: 4, segs: [{ b: 30, d: 430 }], walkB: 75, walk: 34 },
+  { n: 4, par: 3, segs: [{ b: 115, d: 200 }], walkB: 60, walk: 30 }, // across the east pond
+  { n: 5, par: 4, segs: [{ b: 350, d: 470 }], walkB: 300, walk: 36 },
+  { n: 6, par: 4, segs: [{ b: 275, d: 425 }], walkB: 320, walk: 34 },
+  { n: 7, par: 3, segs: [{ b: 300, d: 230 }], walkB: 260, walk: 30 },
+  { n: 8, par: 5, endAt: { b: 92, d: 495 }, walkB: 175, walk: 40 },
+  { n: 9, par: 4, homeRun: { len: 435, minStop: 110 }, walkB: 285, walk: 42 }, // home to the east porch
+  // ---- back nine: west to the water, then the Caney Creek run ----------
+  { n: 10, par: 4, segs: [{ b: 262, d: 430 }], walkB: 300, walk: 36 },
+  { n: 11, par: 5, segs: [{ b: 285, d: 320 }, { b: 262, d: 225 }], walkB: 310, walk: 34 },
+  { n: 12, par: 3, segs: [{ b: 290, d: 185 }], walkB: 235, walk: 32 }, // creek-bluff one-shotter
+  { n: 13, par: 5, segs: [{ b: 245, d: 300 }, { b: 268, d: 230 }], walkB: 5, walk: 34 }, // to the headwaters bluff
+  { n: 14, par: 4, segs: [{ b: 35, d: 455 }], walkB: 80, walk: 30 }, // up the bank, creek left
+  { n: 15, par: 3, segs: [{ b: 75, d: 178 }], walkB: 120, walk: 34 }, // Gator Cove carry
+  { n: 16, par: 4, segs: [{ b: 140, d: 440 }], walkB: 140, walk: 34 }, // along the water's last reach
+  { n: 17, par: 4, segs: [{ b: 115, d: 445 }], walkB: 200, walk: 36 },
+  { n: 18, par: 4, homeRun: { len: 455, minStop: 90 } }, // up to the clubhouse lawn
 ];
 
 /** The Needler — nine one-shotters beside the clubhouse, Pine Valley style. */
@@ -100,7 +105,17 @@ function layout(spec, startTee, closeAnchor) {
   for (const h of spec) {
     let green;
     const midpoints = [];
-    if (h.homeRun) {
+    if (h.endAt) {
+      // Green pinned at a fixed offset from the anchor; the hole bends
+      // gently from wherever the previous walk left the tee.
+      green = destination(closeAnchor, h.endAt.b, h.endAt.d * YD);
+      const len = distanceM(tee, green) / YD;
+      const midB = bearingDeg(tee, green);
+      midpoints.push(
+        destination(destination(tee, midB, len * 0.5 * YD), midB - 90, 22 * YD)
+      );
+      holes.push({ n: h.n, par: h.par, tee, green, midpoints, yards: Math.round(len) });
+    } else if (h.homeRun) {
       // Deterministic closer: aim straight at the anchor (clubhouse) and
       // stop `minStop` yards out, capped at the desired length.
       const toAnchor = distanceM(tee, closeAnchor) / YD;
@@ -127,9 +142,9 @@ function layout(spec, startTee, closeAnchor) {
   return holes;
 }
 
-const tee1 = destination(CLUBHOUSE, 205, 70 * YD);
+const tee1 = destination(CLUBHOUSE, 185, 70 * YD);
 const championship = layout(HOLES, tee1, CLUBHOUSE);
-const needlerStart = destination(CLUBHOUSE, 290, 190 * YD);
+const needlerStart = destination(CLUBHOUSE, 245, 190 * YD);
 const needler = layout(NEEDLER, needlerStart, CLUBHOUSE);
 
 let total = 0;
@@ -145,7 +160,7 @@ for (const h of championship) {
 console.error(`championship total ${total}yd (target 7468)`);
 console.error(`needler total ${needler.reduce((s, h) => s + h.yards, 0)}yd`);
 
-// Extents for sanity vs. the DEM upland (lat 30.852–30.876, lng -95.21 – -95.185)
+// Extents vs. the DEM upland (lat 30.910–30.924, lng -95.268 – -95.232)
 const lats = championship.flatMap((h) => [h.tee.lat, h.green.lat]);
 const lngs = championship.flatMap((h) => [h.tee.lng, h.green.lng]);
 console.error(
@@ -159,17 +174,18 @@ const data = {
   pins: {
     clubhouse: fix(CLUBHOUSE),
     firstTee: fix(tee1),
-    range: fix(pinAt(335, 300)),
-    puttingGreen: fix(pinAt(120, 90)),
+    range: fix(pinAt(330, 300)),
+    puttingGreen: fix(pinAt(150, 90)),
     needler: fix(needlerStart),
-    village: fix(pinAt(20, 420)),
-    directorsCorner: fix(pinAt(58, 360)),
-    lonesomeDove: fix(pinAt(345, 250)),
+    village: fix(pinAt(40, 420)),
+    directorsCorner: fix(pinAt(75, 360)),
+    lonesomeDove: fix(pinAt(15, 250)),
     gatorCove: fix(championship[14].green),
-    spiritPlaza: fix(pinAt(95, 160)),
-    campOlympia: { lat: 30.8425, lng: -95.2065 },
-    boatLanding: fix(pinAt(238, 520)),
+    spiritPlaza: fix(pinAt(110, 160)),
+    campOlympia: { lat: 30.9095, lng: -95.2615 },
+    boatLanding: { lat: 30.9135, lng: -95.27 },
   },
+
   championship: championship.map((h) => ({
     n: h.n, par: h.par, yards: h.yards,
     tee: fix(h.tee), green: fix(h.green), midpoints: h.midpoints.map(fix),

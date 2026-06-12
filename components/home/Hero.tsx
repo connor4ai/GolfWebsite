@@ -31,9 +31,9 @@ export function Hero() {
   const heroView = signature
     ? {
         center: signature.green,
-        zoom: 15.9,
-        bearing: 110,
-        pitch: 58,
+        zoom: 15.4,
+        bearing: 70,
+        pitch: 55,
       }
     : { center: site.location.coords, zoom: 15.2, bearing: 0, pitch: 50 };
 

@@ -172,11 +172,11 @@ export function PropertyMap({
       ? { top: 90, bottom: 40, left: 40, right: 470 }
       : { top: 80, bottom: Math.round(window.innerHeight * 0.55), left: 20, right: 20 };
     if (reduced) {
-      map.jumpTo({ center: [selected.coords.lng, selected.coords.lat], zoom: 16.2, padding });
+      map.jumpTo({ center: [selected.coords.lng, selected.coords.lat], zoom: 16.1, padding });
     } else {
       map.flyTo({
         center: [selected.coords.lng, selected.coords.lat],
-        zoom: 16.3,
+        zoom: 16.1,
         pitch: 58,
         padding,
         duration: 2300,

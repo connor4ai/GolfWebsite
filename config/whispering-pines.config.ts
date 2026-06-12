@@ -51,13 +51,19 @@ function holeView(h: LayoutHole): SatView {
   };
 }
 
+// Esri World Imagery's native resolution over rural East Texas tops out
+// around z17 — requesting deeper just upsamples (blur). Clamp every crop.
+const MAX_SHARP_ZOOM = 16.8;
 const aerial = (
   center: LatLng,
   zoom: number,
   alt: string,
   bearing = 0,
   pitch = 0
-): ImageAsset => ({ alt, sat: { center, zoom, bearing, pitch } });
+): ImageAsset => ({
+  alt,
+  sat: { center, zoom: Math.min(zoom, MAX_SHARP_ZOOM), bearing, pitch },
+});
 
 const P = layout.pins as Record<string, LatLng>;
 const CLUB = layout.clubhouse as LatLng;
@@ -75,7 +81,7 @@ const CHAMP_CARD: Record<
   1: {
     yards: 450,
     hcp: 7,
-    desc: "The round opens due north off the clubhouse hill, a broad two-shotter framed wall-to-wall by the loblolly pines that name the place. Zeon zoysia fairways run true and fast here — a firm handshake before the property starts to move.",
+    desc: "The round opens away south of the clubhouse hill, a broad two-shotter framed wall-to-wall by the loblolly pines that name the place. Zeon zoysia fairways run true and fast here — a firm handshake before the property starts to move.",
     tip: "There is more room left than the tree line admits. Favor that side and the approach opens up.",
   },
   2: {
@@ -93,31 +99,31 @@ const CHAMP_CARD: Record<
   4: {
     yards: 200,
     hcp: 15,
-    desc: "The first one-shotter plays across the corner of the north lake, all carry to a green benched against the water. The TifEagle surface is generous; the line is not.",
+    desc: "The first one-shotter plays across the pond at the property's eastern reach, all carry to a green benched against the water. The TifEagle surface is generous; the line is not.",
     tip: "The water exaggerates everything. Pick the club for the middle of the green and swing without negotiation.",
   },
   5: {
     yards: 470,
     hcp: 1,
-    desc: "The number-one handicap runs long and east, the fairway tumbling with the land before climbing to a deep, two-tiered green. Par here is a shot gained on almost everyone.",
+    desc: "The number-one handicap runs long and north, the fairway tumbling with the land before climbing to a deep, two-tiered green. Par here is a shot gained on almost everyone.",
     tip: "Drive to the right-center speed slot and accept the longest mid-iron you can hit flush. Bogey from the front fringe beats double from anywhere brave.",
   },
   6: {
     yards: 425,
     hcp: 11,
-    desc: "Turning south for the first time, six works downhill through a pine-framed saddle. The scale deceives — the corridor is wider than it reads, the green smaller than it looks.",
+    desc: "Turning back west, six works downhill through a pine-framed saddle. The scale deceives — the corridor is wider than it reads, the green smaller than it looks.",
     tip: "Check the wind at the flag, not the treetops; the corridor swirls it. Center of the green is always right.",
   },
   7: {
     yards: 230,
     hcp: 13,
-    desc: "A long iron west across a natural amphitheater of pines, to a green defended by sand and shaved run-offs. The kind of par three the Spirit's internationals talk about on the flight home.",
+    desc: "A long iron through a natural amphitheater of pines, to a green defended by sand and shaved run-offs. The kind of par three the Spirit's internationals talk about on the flight home.",
     tip: "A running long iron beats a soaring hybrid here — the front door is open for a reason.",
   },
   8: {
     yards: 585,
     hcp: 5,
-    desc: "The longest hole on the card swings south in two unhurried turns. Big hitters can flirt with the inside line; everyone else plays the width Chet Williams gave them and arrives putting for birdie anyway.",
+    desc: "The longest hole on the card swings around the eastern meadow in two unhurried turns. Big hitters can flirt with the inside line; everyone else plays the width Chet Williams gave them and arrives putting for birdie anyway.",
     tip: "The hole gives you one wide landing area per shot. Use all three and the green arrives on schedule.",
   },
   9: {
@@ -129,13 +135,13 @@ const CHAMP_CARD: Record<
   10: {
     yards: 430,
     hcp: 8,
-    desc: "The inward nine starts south into the quiet heart of the property, the fairway sliding between pine shadows toward a green that tilts subtly back at you.",
+    desc: "The inward nine starts west into the quiet heart of the property, the fairway sliding between pine shadows toward a green that tilts subtly back at you.",
     tip: "Below the hole is everything. Leave the approach a half-club short and putt uphill all day.",
   },
   11: {
     yards: 545,
     hcp: 4,
-    desc: "A par five working steadily down toward Caney Creek country, bending left past the property's southern lakes. The third shot plays to a green you'll want to photograph and then respect.",
+    desc: "A par five working steadily out toward Caney Creek country, bending with the land past the interior lakes. The third shot plays to a green you'll want to photograph and then respect.",
     tip: "Lay up long-right of the 100 marker; the angle past the front bunkering is worth twenty yards of distance.",
   },
   12: {
@@ -147,14 +153,14 @@ const CHAMP_CARD: Record<
   13: {
     yards: 560,
     hcp: 2,
-    desc: "Now the famous stretch begins. Thirteen plunges south to the creek itself, a true three-shot five that ends hard against the bottomland — gators and all. The start of the run home along Caney Creek and the headwaters of Lake Livingston.",
+    desc: "Now the famous stretch begins. Thirteen runs out to the headwaters bluff, a true three-shot five that ends hard against the bottomland — gators and all. The start of the run home along Caney Creek and the headwaters of Lake Livingston.",
     tip: "Whatever the lie says, finish your second short of the final crest — from there the green sits in a natural theater you want to walk into, not gamble at.",
   },
   14: {
     yards: 455,
     hcp: 6,
-    desc: "Back up the creek line with the water riding your right shoulder the whole way. Long, beautiful, and unbothered by your score.",
-    tip: "The fairway cants toward the creek — start everything one width left and let it work back.",
+    desc: "Back up the creek line with the water riding your left shoulder the whole way. Long, beautiful, and unbothered by your score.",
+    tip: "The fairway cants toward the creek — start everything one width right and let it work back.",
   },
   15: {
     yards: 178,
@@ -165,19 +171,19 @@ const CHAMP_CARD: Record<
   16: {
     yards: 440,
     hcp: 14,
-    desc: "Turning for home along the water's last reach, sixteen runs west with the lake headwaters glinting through the trees. A complete driving hole with the round on the line.",
+    desc: "Turning for home along the water's last reach, sixteen slides southeast with the creek at your back and the lake glinting through the trees. A complete driving hole with the round on the line.",
     tip: "The right-center line shortens the hole and keeps the water out of mind, if not out of sight.",
   },
   17: {
     yards: 445,
     hcp: 12,
-    desc: "A two-shotter climbing northwest through the pines, the creek finally behind you and the clubhouse chimney appearing through the canopy. Seventeen has quietly decided more matches here than fifteen.",
+    desc: "A two-shotter climbing through the pines, the creek finally behind you and the clubhouse chimney appearing through the canopy. Seventeen has quietly decided more matches here than fifteen.",
     tip: "An extra club uphill into the evening breeze — the green's false front returns anything proud.",
   },
   18: {
     yards: 480,
     hcp: 10,
-    desc: "The closer plays long and northeast to the clubhouse lawn, the porch filling with the day's verdicts as you walk up. A par at the last at Whispering Pines is a story you're allowed to keep.",
+    desc: "The closer plays long and true to the clubhouse lawn, the porch filling with the day's verdicts as you walk up. A par at the last at Whispering Pines is a story you're allowed to keep.",
     tip: "Swing freely — the fairway is the widest on the back nine. The hole only punishes the protective.",
   },
 };
@@ -404,10 +410,10 @@ const config: SiteConfig = {
   ],
 
   propertyMap: {
-    center: { lat: 30.8595, lng: -95.1955 },
-    zoom: 14.5,
-    bearing: 200,
-    pitch: 50,
+    center: { lat: 30.9168, lng: -95.253 },
+    zoom: 14.9,
+    bearing: 250,
+    pitch: 46,
     holePins: true,
     tour: { label: "Play the property tour", dwell: 3.2 },
     entry: {
@@ -519,12 +525,12 @@ const config: SiteConfig = {
       },
       {
         id: "caney-creek",
-        coords: { lat: 30.8525, lng: -95.1885 },
+        coords: { lat: 30.9205, lng: -95.2655 },
         category: "activity",
         title: "Caney Creek",
         shortDesc:
-          "The gator-patrolled water that shapes the famous closing run, sliding out of the pines into the headwaters of Lake Livingston.",
-        image: aerial({ lat: 30.8525, lng: -95.1885 }, 16.2, "Caney Creek winding past the closing holes", 150),
+          "The gator-patrolled water that shapes the famous closing run, sliding out of the pines into the headwaters of Lake Livingston. Mapped by USGS at this very bend.",
+        image: aerial({ lat: 30.9205, lng: -95.2655 }, 16.2, "Caney Creek winding past the closing holes", 150),
         route: "/course/championship/holes?hole=13",
       },
       {
@@ -663,7 +669,7 @@ const config: SiteConfig = {
       { ...aerial(P.gatorCove, 17.2, "Gator Cove and the fifteenth green", 96), category: "The Creek Run" },
       { ...aerial(midOf(champLayout[12]), 15.9, "Thirteen falling toward Caney Creek", 160), category: "The Creek Run" },
       { ...aerial(midOf(champLayout[13]), 16.0, "Fourteen riding the creek line home", 337), category: "The Creek Run" },
-      { ...aerial({ lat: 30.8525, lng: -95.1885 }, 15.6, "Caney Creek meeting the headwaters", 150), category: "The Creek Run" },
+      { ...aerial({ lat: 30.9205, lng: -95.2655 }, 15.6, "Caney Creek meeting the headwaters", 150), category: "The Creek Run" },
       { ...aerial(midOf(champLayout[0]), 16.1, "The first hole running north into the pines", 18), category: "Championship" },
       { ...aerial(midOf(champLayout[4]), 16.0, "The fifth, the card's sternest test", 73), category: "Championship" },
       { ...aerial(midOf(champLayout[7]), 15.7, "The eighth from above — 585 yards of patience", 190), category: "Championship" },

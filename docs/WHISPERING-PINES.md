@@ -27,17 +27,19 @@ what is derived, and exactly what the club must sign off before launch.
 
 ## 2. Derived data — flag for club verification before launch
 
-1. **GPS coordinates (property + every hole).** The club's site and APIs
-   were unreachable from the build environment, so the property location
-   was derived by water-shape matching in open elevation data
-   (`scripts/locate-course.mjs`): the peninsula at the lake's headwaters
-   between the Trinity River arm and the Caney Creek arm, clubhouse
-   ≈ (30.8638, −95.1990). The 18-hole routing
+1. **GPS coordinates (property + every hole).** The property location is
+   anchored to **federal GNIS data** (USGS DomesticNames for Texas, pulled
+   from the public `prd-tnm` S3 bucket): the peninsula bounded by Caney
+   Creek (mouth 30.9205, −95.2699 — GNIS feature 1353735) and White Rock
+   Creek (mouth 30.9055, −95.2658) on the east bank of the Trinity River
+   at the Lake Livingston headwaters, cross-checked against the open-DEM
+   water mask. Clubhouse anchor ≈ (30.9165, −95.2475). The 18-hole routing
    (`scripts/layout-whispering-pines.mjs` → `scripts/data/wp-layout.json`)
-   honors the published facts (par sequence totals, creek-side 13–18,
-   Gator Cove 15th, Needler beside the clubhouse) but **is not surveyed**.
-   → Open `/explore` over real satellite, walk the pins, and correct
-   coordinates in the layout script (regenerate) or directly in config.
+   honors the published facts (creek-run finish along lower Caney, Gator
+   Cove 15th at the creek/river pocket, Needler beside the clubhouse) but
+   hole positions remain **plan-derived, not GPS-surveyed**.
+   → Open `/explore` over satellite, align pins to the visible fairways,
+   and correct in the layout script (regenerate) or directly in config.
 2. **Per-hole yardages and stroke indexes.** Published totals and the
    15th's 178 are real; the other 17 per-hole numbers are a reconstruction
    that sums exactly to 7,468 (and tee scalings to the rated totals).
@@ -52,6 +54,21 @@ what is derived, and exactly what the club must sign off before launch.
 6. **og-image.png** is brand art; swap for a photograph at launch.
 
 ## 3. Imagery system & the photo drop
+
+**To get real photographs flowing:** this build environment's network
+policy blocks every external image host (HTTP 403 — the club's site,
+Unsplash, Google, archive.org). In the Claude Code environment settings,
+set **Network access → broad/all domains** (or run on any normal machine),
+then:
+
+```bash
+node scripts/fetch-photos.mjs --crawl   # harvest the club's own site
+```
+
+The crawler downloads the club's published imagery to `public/photos/club/`
+with a source report; assign approved files to config `src` slots (the
+aerial stays as automatic fallback). Hand-picked stock (Unsplash/Pexels)
+for generic textures goes in the same script's MANIFEST.
 
 Every photo slot is an `ImageAsset` carrying a `sat` view: until club
 photography is supplied, the site renders **live aerial imagery of the
